@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Human Resource System</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bMin.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/main.js"></script>
+    <script src="js/jMin.js"></script>
+    <script src="js/bMin.js"></script>
+</head>
+
+<body>
+    <div id="wrapper" class="container">
+        <div id="top_header">
+            <h2 id="Project_header" class="title_color">Human Resource System</h2>
+        </div>
+        <div id="menu">
+            <ul id="menu" class="nav nav-tabs">
+                <li><a href="home.html">Home</a>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Employees<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="addemployee.html">New</a>
+                        </li>
+                        <li><a href="employeelist.html">List (All Employee)</a>
+                        </li>
+                        <li><a href="searchemployee.html">Search</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Jobs<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="addjob.html">New</a>
+                        </li>
+                        <li><a href="joblist.html">List (All Jobs)</a>
+                        </li>
+
+                        <li><a href="searchjob.html">Search</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Assignment<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="jobassignment.html">New Assignment</a>
+                        </li>
+                        <li><a href="jobassignmentlist.html">Employee Assignment</a>
+                        </li>
+                        <li><a href="searchjobassignment.html">Search Assignment</a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="#">Help</a>
+                </li>
+            </ul>
+        </div>
+        <div id="container">
+            <div id="container_header">
+                <h4>Delete Job</h4>
+            </div>
+            <div id="container_body">
+                <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="email">Job Number:</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="email" placeholder="Enter Job Number" value="RD14379305" disabled>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="pwd">Job Name:</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="pwd" placeholder="Enter Job Name" value="May-Issue Print Text">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="pwd">Description:</label>
+                <div class="col-sm-6">
+                    <textarea class="form-control" rows="5" id="comment">May-Issue Print Text Description</textarea>
+                    <h6 class="pull-right" id="count_message">(54 Character Remaining)  </h6>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-6">
+                    <button type="button" data-toggle="modal" data-target="#myModal" class="col-sm-offset-4 btn btn-default">Delete</button>
+                    <button type="button" onclick="showJobList()" class="col-sm-offset-1 btn btn-default">Back</button>
+                </div>
+
+            </div>
+
+            <div class="container">
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" role="popup" style="display: none;">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"></button>
+                                <h4 class="modal-title">Alert</h4>
+                            </div>
+                            <div class="modal-body">
+                                <h5>Are You Sure Want To Delete?</h5>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default btnDefault_gary">Yes</button>
+                                <button type="button" class="btn btn-default btnDefault_gary" data-dismiss="modal">No</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </form>
+            </div>
+        </div>
+		<div id="bfooter">
+		<p>Copyright &copy; 2016 &middot; All Rights Reserved.</p>
+		</div>
+    </div>
+</body>
+
+</html>

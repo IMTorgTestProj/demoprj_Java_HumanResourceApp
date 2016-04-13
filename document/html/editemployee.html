@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Human Resource System</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bMin.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/main.js"></script>
+    <script src="js/jMin.js"></script>
+    <script src="js/bMin.js"></script>
+</head>
+
+<body>
+    <div id="wrapper" class="container">
+        <div id="top_header">
+            <h2 id="Project_header" class="title_color">Human Resource System</h2>
+        </div>
+        <div id="menu">
+            <ul id="menu" class="nav nav-tabs">
+                <li><a href="home.html">Home</a>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Employees<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="addemployee.html">New</a>
+                        </li>
+                        <li><a href="employeelist.html">List (All Employee)</a>
+                        </li>
+                        <li><a href="searchemployee.html">Search</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Jobs<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="addjob.html">New</a>
+                        </li>
+                        <li><a href="joblist.html">List (All Jobs)</a>
+                        </li>
+
+                        <li><a href="searchjob.html">Search</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Assignment<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="jobassignment.html">New Assignment</a>
+                        </li>
+                        <li><a href="jobassignmentlist.html">Employee Assignment</a>
+                        </li>
+                        <li><a href="searchjobassignment.html">Search Assignment</a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="#">Help</a>
+                </li>
+            </ul>
+        </div>
+        <div id="container">
+            <div id="container_header">
+                <h4>Edit Employee</h4>
+            </div>
+            <div id="container_body">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="firstname">First Name:</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="firstname" placeholder="" value="Caroline">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="lastname">Last Name:</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="lastname" placeholder="" value="Keller">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="initial">Middle Initial:</label>
+                        <div class="col-sm-1">
+                            <input type="text" class="form-control" id="initial" placeholder="" value="A">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="ssn">SSN:</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="ssn" placeholder="" value="123-45-6789" disabled>
+                        </div>
+                    </div>
+					<div class="form-group">
+                        <label class="control-label col-sm-2" for="sel_loc">Location:</label>
+                        <div class="col-sm-3">
+                            <select class="form-control" id="sel_loc">
+								<option>Pune</option>
+								<option>Mumbai</option>								
+								<option>Delhi</option>
+								<option>Goa</option>
+							  </select>
+                        </div>
+                    </div>
+					 
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="salarytype">Salary Type:</label>
+                        <div class="col-sm-6">
+                            <label class="radio-inline"><input type="radio" name="hourly">Hourly</label>
+							<label class="radio-inline"><input type="radio" name="salaried" checked>Salaried</label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-6">
+                            <button type="button" class="col-sm-offset-4 btn btn-default">Update</button>
+                            <button type="button" class="col-sm-offset-1 btn btn-default" onclick="showEmployeeList()">Back</button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+		<div id="bfooter">
+		<p>Copyright &copy; 2016 &middot; All Rights Reserved.</p>
+		</div>
+    </div>
+</body>
+
+</html>

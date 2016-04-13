@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>Human Resource System</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="css/bMin.css">
+      <link rel="stylesheet" href="css/main.css">
+      <script src="js/main.js"></script>
+      <script src="js/jMin.js"></script>
+      <script src="js/bMin.js"></script>
+   </head>
+   <body>
+      <div id="wrapper" class="container">
+         <div id="top_header">
+            <h2 id="Project_header" class="title_color">Human Resource System</h2>
+         </div>
+         <div id="menu">
+            <ul id="menu" class="nav nav-tabs">
+                <li><a href="home.html">Home</a>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Employees<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="addemployee.html">New</a>
+                        </li>
+                        <li><a href="employeelist.html">List (All Employee)</a>
+                        </li>
+                        <li><a href="searchemployee.html">Search</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Jobs<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="addjob.html">New</a>
+                        </li>
+                        <li><a href="joblist.html">List (All Jobs)</a>
+                        </li>
+
+                        <li><a href="searchjob.html">Search</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Assignment<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="jobassignment.html">New Assignment</a>
+                        </li>
+                        <li><a href="jobassignmentlist.html">Employee Assignment</a>
+                        </li>
+                        <li><a href="searchjobassignment.html">Search Assignment</a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="#">Help</a>
+                </li>
+            </ul>
+        </div>
+         <div id="container">
+            <div id="container_header">
+               <h4>Edit Job Assignment</h4>
+            </div>
+            <div id="container_body">
+               <fieldset>
+                  <legend>Employee Information</legend>
+                  <div class="form-horizontal">
+                     <div class="form-group">
+                        <label class="control-label col-sm-1" for="email">SSN:</label>
+                        <div class="col-sm-4">
+                           <select class="form-control" id="sel1">
+                              <option>123-45-678</option>
+                              <option>123-45-678</option>
+                              <option>123-45-678</option>
+                              <option>123-45-678</option>
+                           </select>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="detail">
+                     <div class="col-sm-4" >
+                        <div class="row">
+                           <label class="control-label col-sm-4" for="uSalaryType">First Name</label>
+                        </div>
+                        <div class="row">
+                           <div class="col-sm-8">
+                              <input type="text" class="form-control " id="email" value="Caroline" placeholder="">
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-sm-4" >
+                        <div class="row">
+                           <label class="control-label col-sm-4" for="uSalaryType">Middle Initial</label>
+                        </div>
+                        <div class="row">
+                           <div class="col-sm-4">
+                              <input type="text" class="form-control " id="email" value="A" placeholder="">
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-sm-4" >
+                        <div class="row">
+                           <label class="control-label col-sm-4" for="uSalaryType">Last Name</label>
+                        </div>
+                        <div class="row">
+                           <div class="col-sm-8">
+                              <input type="text" class="form-control " id="email" value="Keller" placeholder="">
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="detail">
+                     <div class="col-sm-4" >
+                        <div class="row">
+                           <label class="control-label col-sm-4" for="uSalaryType">Location</label>
+                        </div>
+                        <div class="row">
+                           <div class="col-sm-8">
+                              <input type="text" class="form-control " id="email" value="Mumbai, India" placeholder="">
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-sm-4" >
+                        <div class="row">
+                           <label class="control-label col-sm-4" for="uSalaryType ">Salary Type</label>
+                        </div>
+                        <div class="row">
+                           <div class="col-sm-8">
+                              <input type="text" class="form-control " id="email" value="Hourly" placeholder="">
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-sm-4" ></div>
+                  </div>
+               </fieldset>
+               <fieldset>
+                  <legend>Job Information</legend>
+                  <div class="form-horizontal">
+                     <div class="form-group">
+                        <label class="control-label col-sm-1" for="email">Job Number:</label>
+                        <div class="col-sm-4">
+                           <select class="form-control" id="sel1">
+                              <option>RD1479305</option>
+                              <option>JB1234567</option>
+                              <option>JB2345678</option>
+                              <option>JB3456789</option>
+                              <option>JB4567891</option>
+                           </select>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="detail">
+                     <div class="col-sm-4" >
+                        <div class="row">
+                           <label class="control-label col-sm-4" for="uSalaryType">Job Name</label>
+                        </div>
+                        <div class="row">
+                           <div class="col-sm-8">
+                              <input type="text" class="form-control " id="email" value="May Issue Print Text" placeholder="">
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-sm-8" >
+                        <div class="row">
+                           <label class="control-label col-sm-4" for="uSalaryType ">Description</label>
+                        </div>
+                        <div class="row">
+                           <div class="col-sm-8">
+                              <textarea class="form-control" rows="5" id="comment"></textarea>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </fieldset>
+               <div class="col-sm-6">
+                  <input type="button" class="col-sm-offset-4 btn btn-default" value="Update" />                  
+                  <input type="button" class="col-sm-offset-1 btn btn-default" value="Back" onclick="showJobAssignmentList()"/>                            
+               </div>
+            </div>
+         </div>
+         <div id="bfooter">
+            <p>Copyright &copy; 2016 &middot; All Rights Reserved.</p>
+         </div>
+      </div>
+   </body>
+</html>
