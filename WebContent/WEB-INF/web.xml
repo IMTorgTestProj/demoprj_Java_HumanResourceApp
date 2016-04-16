@@ -44,6 +44,16 @@
 		<url-pattern>/job/add.html</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>list_job</servlet-name>
+		<jsp-file>/job/list.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>list_job</servlet-name>
+		<url-pattern>/job/list.html</url-pattern>
+	</servlet-mapping>
+
 	<!-- JOB END -->
 
 

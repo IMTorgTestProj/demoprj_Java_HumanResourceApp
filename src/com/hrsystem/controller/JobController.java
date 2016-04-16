@@ -3,6 +3,7 @@ package com.hrsystem.controller;
 import java.io.IOException;
 import java.util.Date;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,12 +18,32 @@ public class JobController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private static final String ADD_PAGE = "/job/add.html";
+	private static final String LIST_PAGE = "/job/list.html";
 
 	private JobDAO jobDAO;
 
 	public JobController() {
 		super();
 		this.jobDAO = new JobDAOImpl();
+	}
+	
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//String pageContext = request.getContextPath();
+		String page = "";
+		String action = request.getParameter("action");
+
+		System.out.println("Operation @ GET : " + action);
+
+		if (action.equals(HRUtil.Action.LIST)) {
+			request.setAttribute("jobs", jobDAO.getAllJobs());
+			page = LIST_PAGE;
+		} 
+
+		RequestDispatcher view = request.getRequestDispatcher(page);
+		view.forward(request, response);
+		// view.include(request, response);
+
 	}
 
 	@Override

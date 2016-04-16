@@ -2,7 +2,11 @@ package com.hrsystem.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.hrsystem.model.Job;
 import com.hrsystem.util.DBUtil;
@@ -45,4 +49,37 @@ public class JobDAOImpl implements JobDAO {
 		return actionResult;
 	}
 
+	@Override
+	public List<Job> getAllJobs() {
+		List<Job> jobs = new ArrayList<Job>();
+
+		try {
+			String sqlQuery = "select * from job";
+			Statement statement = connection.prepareStatement(sqlQuery);
+
+			ResultSet rs = statement.executeQuery(sqlQuery);
+
+			while (rs.next()) {
+				Job job = new Job();
+
+				job.setJobId(rs.getInt("jobid"));
+				job.setJobNumber(rs.getString("jobnumber"));
+				job.setJobName(rs.getString("name"));
+				job.setDescription(rs.getString("description"));
+
+				// System.out.println(job);
+				jobs.add(job);
+
+			}
+
+		} catch (SQLException ex) {
+			System.out.println("SQL Exception : " + ex.getMessage());
+			ex.printStackTrace();
+		} catch (Exception ex) {
+			System.out.println("Exception : " + ex.getMessage());
+			ex.printStackTrace();
+		}
+
+		return jobs;
+	}
 }
