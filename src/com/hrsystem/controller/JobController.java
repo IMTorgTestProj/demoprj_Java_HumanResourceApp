@@ -19,6 +19,7 @@ public class JobController extends HttpServlet {
 
 	private static final String ADD_PAGE = "/job/add.html";
 	private static final String LIST_PAGE = "/job/list.html";
+	private static final String VIEW_PAGE = "/job/view.html";
 
 	private JobDAO jobDAO;
 
@@ -26,10 +27,10 @@ public class JobController extends HttpServlet {
 		super();
 		this.jobDAO = new JobDAOImpl();
 	}
-	
+
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//String pageContext = request.getContextPath();
+		// String pageContext = request.getContextPath();
 		String page = "";
 		String action = request.getParameter("action");
 
@@ -38,7 +39,11 @@ public class JobController extends HttpServlet {
 		if (action.equals(HRUtil.Action.LIST)) {
 			request.setAttribute("jobs", jobDAO.getAllJobs());
 			page = LIST_PAGE;
-		} 
+		} else if (action.equals(HRUtil.Action.VIEW)) {
+			int jobId = Integer.parseInt(request.getParameter("id"));
+			request.setAttribute("job", jobDAO.getJobById(jobId));
+			page = VIEW_PAGE;
+		}
 
 		RequestDispatcher view = request.getRequestDispatcher(page);
 		view.forward(request, response);

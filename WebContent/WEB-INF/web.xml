@@ -29,7 +29,6 @@
 		<servlet-name>JobController</servlet-name>
 		<servlet-class>com.hrsystem.controller.JobController</servlet-class>
 	</servlet>
-
 	<servlet-mapping>
 		<servlet-name>JobController</servlet-name>
 		<url-pattern>/job/Controller</url-pattern>
@@ -48,10 +47,18 @@
 		<servlet-name>list_job</servlet-name>
 		<jsp-file>/job/list.jsp</jsp-file>
 	</servlet>
-
 	<servlet-mapping>
 		<servlet-name>list_job</servlet-name>
 		<url-pattern>/job/list.html</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>view_job</servlet-name>
+		<jsp-file>/job/view.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>view_job</servlet-name>
+		<url-pattern>/job/view.html</url-pattern>
 	</servlet-mapping>
 
 	<!-- JOB END -->

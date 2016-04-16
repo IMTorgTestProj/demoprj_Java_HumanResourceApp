@@ -7,7 +7,9 @@ import com.hrsystem.model.Job;
 public interface JobDAO {
 
 	public boolean addJob(Job job);
+
 	public List<Job> getAllJobs();
-	
+
+	public Job getJobById(int jobId);
 
 }
