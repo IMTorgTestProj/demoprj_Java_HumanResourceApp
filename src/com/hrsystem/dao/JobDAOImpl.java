@@ -114,4 +114,34 @@ public class JobDAOImpl implements JobDAO {
 
 		return job;
 	}
+
+	@Override
+	public boolean updateJob(Job job) {
+		boolean actionResult = false;
+
+		try {
+			String sqlQuery = "update job set jobnumber=?, name=?, description=?, updateddate=? where jobid = ?";
+			PreparedStatement pStatement = connection.prepareStatement(sqlQuery);
+
+			pStatement.clearParameters();
+
+			pStatement.setString(1, job.getJobNumber());
+			pStatement.setString(2, job.getJobName());
+			pStatement.setString(3, job.getDescription());
+			pStatement.setTimestamp(4, new java.sql.Timestamp(job.getUpdatedDate().getTime()));
+			pStatement.setInt(5, job.getJobId());
+
+			pStatement.executeUpdate();
+			actionResult = true;
+
+		} catch (SQLException ex) {
+			System.out.println("SQL Exception : " + ex.getMessage());
+			ex.printStackTrace();
+		} catch (Exception ex) {
+			System.out.println("Exception : " + ex.getMessage());
+			ex.printStackTrace();
+		}
+
+		return actionResult;
+	}
 }

@@ -2,7 +2,7 @@ $(document).ready(function() {
 
 	$('input[name="jobnumber"').focus();
 	
-	$('input[name="addjobbtn"]').click(function() {
+	$('input[name="addjobbtn"],input[name="updatejobbtn"]').click(function() {
 
 		var validation = true;
 		var jobnumber = $('input[name="jobnumber"]').val();

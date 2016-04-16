@@ -20,6 +20,7 @@ public class JobController extends HttpServlet {
 	private static final String ADD_PAGE = "/job/add.html";
 	private static final String LIST_PAGE = "/job/list.html";
 	private static final String VIEW_PAGE = "/job/view.html";
+	private static final String EDIT_PAGE = "/job/edit.html";
 
 	private JobDAO jobDAO;
 
@@ -43,6 +44,12 @@ public class JobController extends HttpServlet {
 			int jobId = Integer.parseInt(request.getParameter("id"));
 			request.setAttribute("job", jobDAO.getJobById(jobId));
 			page = VIEW_PAGE;
+		} else if (action.equals(HRUtil.Action.EDIT)) {
+			int jobId = Integer.parseInt(request.getParameter("id"));
+			request.setAttribute("job", jobDAO.getJobById(jobId));
+			page = EDIT_PAGE;
+			// RequestDispatcher view = request.getRequestDispatcher(page);
+			// view.forward(request, response);
 		}
 
 		RequestDispatcher view = request.getRequestDispatcher(page);
@@ -74,6 +81,22 @@ public class JobController extends HttpServlet {
 
 			page += ADD_PAGE;
 			response.sendRedirect(page);
+		} else if (action.equals(HRUtil.Action.UPDATE)) {
+			Job job = new Job();
+
+			job.setJobId(Integer.parseInt(request.getParameter("id")));
+			job.setJobNumber(request.getParameter("jobnumber"));
+			job.setJobName(request.getParameter("jobname"));
+			job.setDescription(request.getParameter("description"));
+			job.setUpdatedDate(new Date());
+
+			System.out.println(job);
+
+			jobDAO.updateJob(job);
+			request.setAttribute("jobs", jobDAO.getAllJobs());
+			page = LIST_PAGE;
+			RequestDispatcher view = request.getRequestDispatcher(page);
+			view.forward(request, response);
 		}
 
 	}
