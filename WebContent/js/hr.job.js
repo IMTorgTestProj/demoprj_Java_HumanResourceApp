@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
 	$('input[name="jobnumber"').focus();
-	
+
 	$('input[name="addjobbtn"],input[name="updatejobbtn"]').click(function() {
 
 		var validation = true;
@@ -24,6 +24,13 @@ $(document).ready(function() {
 			$('form').submit();
 		}
 
+	});
+
+	$('input[name="deletejobbtn').click(function() {
+		var jobNumber = $('input[name="jobnumber"').val();
+		if (confirm("Are you sure that you want to delete Job: " + jobNumber, "Alert")) {
+			$('form').submit();
+		}
 	});
 
 	$('input[name="clear"]').click(function() {

@@ -144,4 +144,29 @@ public class JobDAOImpl implements JobDAO {
 
 		return actionResult;
 	}
+
+	@Override
+	public boolean deleteJob(int jobId) {
+		boolean actionResult = false;
+
+		try {
+			String sqlQuery = "delete from job where jobId=?";
+			PreparedStatement pStatement = connection.prepareStatement(sqlQuery);
+
+			pStatement.clearParameters();
+			pStatement.setInt(1, jobId);
+
+			pStatement.executeUpdate();
+			actionResult = true;
+
+		} catch (SQLException ex) {
+			System.out.println("SQL Exception : " + ex.getMessage());
+			ex.printStackTrace();
+		} catch (Exception ex) {
+			System.out.println("Exception : " + ex.getMessage());
+			ex.printStackTrace();
+		}
+
+		return actionResult;
+	}
 }

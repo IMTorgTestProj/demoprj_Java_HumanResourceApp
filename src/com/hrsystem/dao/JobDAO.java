@@ -13,5 +13,7 @@ public interface JobDAO {
 	public Job getJobById(int jobId);
 	
 	public boolean updateJob(Job job);
+	
+	public boolean deleteJob(int jobId);
 
 }
