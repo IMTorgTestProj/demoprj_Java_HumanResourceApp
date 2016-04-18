@@ -32,7 +32,7 @@ public class JobController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// String pageContext = request.getContextPath();
+		String pageContext = request.getContextPath();
 		String page = "";
 		String action = request.getParameter("action");
 
@@ -58,6 +58,15 @@ public class JobController extends HttpServlet {
 			jobDAO.deleteJob(jobId);
 			// request.setAttribute("jobs", jobDAO.getAllJobs());
 			page = "Controller?action=list";
+		} else if (action.equals(HRUtil.Action.SEARCH)) {
+			String searchKey = request.getParameter("searchjob");
+
+			if (searchKey.trim().length() > 0)
+				request.setAttribute("jobs", jobDAO.searchJobs(searchKey));
+			
+			request.setAttribute("searchKey", searchKey);
+			page = "search.html";
+
 		}
 
 		if (action.equals(HRUtil.Action.REMOVE)) {
@@ -103,7 +112,7 @@ public class JobController extends HttpServlet {
 
 			System.out.println(job);
 			jobDAO.updateJob(job);
-			
+
 			// request.setAttribute("jobs", jobDAO.getAllJobs());
 			page = "Controller?action=list";
 			// RequestDispatcher view = request.getRequestDispatcher(page);

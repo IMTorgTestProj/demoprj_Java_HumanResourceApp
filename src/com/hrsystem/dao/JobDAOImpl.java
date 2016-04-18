@@ -169,4 +169,41 @@ public class JobDAOImpl implements JobDAO {
 
 		return actionResult;
 	}
+
+	@Override
+	public List<Job> searchJobs(String search) {
+		List<Job> jobs = new ArrayList<Job>();
+
+		try {
+			String sqlQuery = "select * from job where jobnumber like '%"+ search +"%'";
+			PreparedStatement pStatement = connection.prepareStatement(sqlQuery);
+
+			//pStatement.clearParameters();
+			//pStatement.setString(1, search);
+
+			ResultSet rs = pStatement.executeQuery(sqlQuery);
+
+			while (rs.next()) {
+				Job job = new Job();
+
+				job.setJobId(rs.getInt("jobid"));
+				job.setJobNumber(rs.getString("jobnumber"));
+				job.setJobName(rs.getString("name"));
+				job.setDescription(rs.getString("description"));
+
+				// System.out.println(job);
+				jobs.add(job);
+
+			}
+
+		} catch (SQLException ex) {
+			System.out.println("SQL Exception : " + ex.getMessage());
+			ex.printStackTrace();
+		} catch (Exception ex) {
+			System.out.println("Exception : " + ex.getMessage());
+			ex.printStackTrace();
+		}
+
+		return jobs;
+	}
 }

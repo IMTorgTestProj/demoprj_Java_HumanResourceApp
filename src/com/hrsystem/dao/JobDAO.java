@@ -15,5 +15,7 @@ public interface JobDAO {
 	public boolean updateJob(Job job);
 	
 	public boolean deleteJob(int jobId);
+	
+	public List<Job> searchJobs(String search);
 
 }

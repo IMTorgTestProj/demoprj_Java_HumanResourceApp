@@ -39,6 +39,13 @@ $(document).ready(function() {
 		$('textarea[name="description"').val('');
 		$('input[name="jobnumber"').focus();
 	});
+	
+	$('input[name="searchclear"]').click(function(){		
+		$('input[name="searchjob"]').val('');
+		
+		$('table>tbody tr').remove();
+		
+	});
 
 	$('form').bind('submit', function() {
 		$(this).find(':input').removeAttr('disabled');

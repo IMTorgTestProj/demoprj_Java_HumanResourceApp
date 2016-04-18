@@ -78,6 +78,15 @@
 		<servlet-name>delete_job</servlet-name>
 		<url-pattern>/job/delete.html</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>search_job</servlet-name>
+		<jsp-file>/job/search.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>search_job</servlet-name>
+		<url-pattern>/job/search.html</url-pattern>
+	</servlet-mapping>
 
 	<!-- JOB END -->
 
