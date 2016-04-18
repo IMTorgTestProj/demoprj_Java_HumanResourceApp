@@ -91,9 +91,14 @@ label {
 		padding-bottom: 10px;
 		/*margin-bottom: 20px;*/
 	}
+	/*
 	tr td:nth-child(3), tr td:nth-child(4), tr td:nth-child(5) {
 		text-align: center;
-	}
+	}*/
+}
+
+.actioncol{
+	text-align: center;
 }
 
 /* MEDIA CSS - END */

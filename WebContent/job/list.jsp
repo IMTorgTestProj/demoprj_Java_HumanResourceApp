@@ -43,9 +43,9 @@
 								<tr>
 									<td><c:out value="${job.jobNumber}" /></td>
 									<td><c:out value="${job.jobName}" /></td>
-									<td><a href="<%=contextPath%>/job/Controller?action=view&id=<c:out value="${job.jobId}"/>">view</td>
-									<td><a href="<%=contextPath%>/job/Controller?action=edit&id=<c:out value="${job.jobId}"/>">edit</td>
-									<td><a href="<%=contextPath%>/job/Controller?action=delete&id=<c:out value="${job.jobId}"/>">delete</td>
+									<td class="actioncol"><a href="<%=contextPath%>/job/Controller?action=view&id=<c:out value="${job.jobId}"/>">view</td>
+									<td class="actioncol"><a href="<%=contextPath%>/job/Controller?action=edit&id=<c:out value="${job.jobId}"/>">edit</td>
+									<td class="actioncol"><a href="<%=contextPath%>/job/Controller?action=delete&id=<c:out value="${job.jobId}"/>">delete</td>
 								</tr>
 							</c:forEach>
 						</tbody>
