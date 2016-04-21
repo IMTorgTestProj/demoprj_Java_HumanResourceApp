@@ -89,6 +89,27 @@
 	</servlet-mapping>
 
 	<!-- JOB END -->
+	
+	<!-- EMPLOYEE START -->
+	<servlet>
+		<servlet-name>EmployeeController</servlet-name>
+		<servlet-class>com.hrsystem.controller.EmployeeController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>EmployeeController</servlet-name>
+		<url-pattern>/employee/Controller</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>add_employee</servlet-name>
+		<jsp-file>/employee/add.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>add_employee</servlet-name>
+		<url-pattern>/employee/add.html</url-pattern>
+	</servlet-mapping>
+	
+	<!-- EMPLOYEE END -->
 
 
 </web-app>
