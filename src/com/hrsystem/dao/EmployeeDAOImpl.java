@@ -78,4 +78,40 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		return locations;
 	}
 
+	@Override
+	public List<Employee> getAllEmployees() {
+		List<Employee> employees = new ArrayList<Employee>();
+
+		try {
+			String sqlQuery = "select * from employee";
+			Statement statement = connection.prepareStatement(sqlQuery);
+
+			ResultSet rs = statement.executeQuery(sqlQuery);
+
+			while (rs.next()) {
+
+				Employee employee = new Employee();
+
+				employee.setFirstName(rs.getString("firstname"));
+				employee.setLastName(rs.getString("lastname"));
+				employee.setSsn(rs.getString("ssn"));
+				employee.setInitMiddle(rs.getString("initmiddle"));
+				employee.setLocation(rs.getString("location"));
+				employee.setSalaryType(rs.getString("salarytype"));
+				
+				//System.out.println(employee);
+				employees.add(employee);
+			}
+
+		} catch (SQLException ex) {
+			System.out.println("SQL Exception : " + ex.getMessage());
+			ex.printStackTrace();
+		} catch (Exception ex) {
+			System.out.println("Exception : " + ex.getMessage());
+			ex.printStackTrace();
+		}
+
+		return employees;
+	}
+
 }

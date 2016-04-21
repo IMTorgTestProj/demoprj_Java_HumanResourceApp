@@ -109,6 +109,15 @@
 		<url-pattern>/employee/add.html</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>list_employee</servlet-name>
+		<jsp-file>/employee/list.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>list_employee</servlet-name>
+		<url-pattern>/employee/list.html</url-pattern>
+	</servlet-mapping>
+	
 	<!-- EMPLOYEE END -->
 
 

@@ -3,6 +3,7 @@ package com.hrsystem.controller;
 import java.io.IOException;
 import java.util.Date;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +19,7 @@ public class EmployeeController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	private static final String ADD_PAGE = "/employee/add.html";
+	private static final String LIST_PAGE = "/employee/list.html";
 
 	private EmployeeDAO employeeDAO;
 
@@ -38,11 +40,21 @@ public class EmployeeController extends HttpServlet {
 			if (session.getAttribute("location") == null) {
 				session.setAttribute("location", employeeDAO.loadLocation());
 			}
-
 			page = pageContext + ADD_PAGE;
+
+		} else if (action.equals(HRUtil.Action.LIST)) {
+			request.setAttribute("employees", employeeDAO.getAllEmployees());
+			page = LIST_PAGE;
+
 		}
 
-		response.sendRedirect(page);
+		if (action.equals(HRUtil.Action.ADD)) {
+			response.sendRedirect(page);
+		} else {
+			RequestDispatcher view = request.getRequestDispatcher(page);
+			view.forward(request, response);
+		}
+
 	}
 
 	@Override
