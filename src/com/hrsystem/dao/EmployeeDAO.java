@@ -10,4 +10,6 @@ public interface EmployeeDAO {
 
 	public boolean addEmployee(Employee employee);
 
+	public List<Employee> getAllEmployees();
+
 }

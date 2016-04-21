@@ -8,8 +8,7 @@
 		data-toggle="dropdown" href="#">Employees<span class="caret"></span></a>
 		<ul class="dropdown-menu">
 			<li><a href="<%=contextPath%>/employee/Controller?action=add">New</a></li>
-			<li><a href="<%=contextPath%>/employeelist.html">List (All
-					Employee)</a></li>
+			<li><a href="<%=contextPath%>/employee/Controller?action=list">List (All Employee)</a></li>
 			<li><a href="<%=contextPath%>/searchemployee.html">Search</a></li>
 		</ul></li>
 	<li class="dropdown"><a class="dropdown-toggle"
