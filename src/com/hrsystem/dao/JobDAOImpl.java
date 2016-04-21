@@ -16,7 +16,7 @@ public class JobDAOImpl implements JobDAO {
 	private Connection connection;
 
 	public JobDAOImpl() {
-		connection = DBUtil.getConnection();
+		this.connection = DBUtil.getConnection();
 	}
 
 	@Override
