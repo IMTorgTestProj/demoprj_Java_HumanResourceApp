@@ -20,6 +20,7 @@ public class EmployeeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String ADD_PAGE = "/employee/add.html";
 	private static final String LIST_PAGE = "/employee/list.html";
+	private static final String VIEW_PAGE = "/employee/view.html";
 
 	private EmployeeDAO employeeDAO;
 
@@ -46,6 +47,10 @@ public class EmployeeController extends HttpServlet {
 			request.setAttribute("employees", employeeDAO.getAllEmployees());
 			page = LIST_PAGE;
 
+		} else if (action.equals(HRUtil.Action.VIEW)) {
+			int employeeId = Integer.parseInt(request.getParameter("id"));
+			request.setAttribute("employee", employeeDAO.getEmployeeById(employeeId));
+			page = VIEW_PAGE;
 		}
 
 		if (action.equals(HRUtil.Action.ADD)) {

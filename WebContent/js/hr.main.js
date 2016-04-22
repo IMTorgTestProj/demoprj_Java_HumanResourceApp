@@ -8,6 +8,10 @@ function showJobList() {
 	window.location.assign(getContextPath() + "/job/Controller?action=list");
 }
 
+function showEmployeeList() {
+	window.location.assign(getContextPath() + "/employee/Controller?action=list");
+}
+
 function getContextPath() {
 	return window.location.pathname.substring(0, window.location.pathname.indexOf("/", 2));
 }

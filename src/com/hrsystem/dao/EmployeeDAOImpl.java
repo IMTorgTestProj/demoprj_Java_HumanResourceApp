@@ -92,6 +92,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
 				Employee employee = new Employee();
 
+				employee.setEmployeeId(rs.getInt("employeeid"));
 				employee.setFirstName(rs.getString("firstname"));
 				employee.setLastName(rs.getString("lastname"));
 				employee.setSsn(rs.getString("ssn"));
@@ -112,6 +113,42 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		}
 
 		return employees;
+	}
+
+	@Override
+	public Employee getEmployeeById(int employeeId) {
+		Employee employee = new Employee();
+		
+		try {
+			String sqlQuery = "select * from employee where employeeid=?";
+			PreparedStatement pStatement = connection.prepareStatement(sqlQuery);
+
+			pStatement.clearParameters();
+			pStatement.setInt(1, employeeId);
+			ResultSet rs = pStatement.executeQuery();
+
+			if (rs.next()) {
+				
+				employee.setEmployeeId(rs.getInt("employeeid"));
+				employee.setFirstName(rs.getString("firstname"));
+				employee.setLastName(rs.getString("lastname"));
+				employee.setSsn(rs.getString("ssn"));
+				employee.setInitMiddle(rs.getString("initmiddle"));
+				employee.setLocation(rs.getString("location"));
+				employee.setSalaryType(rs.getString("salarytype"));
+				
+				// System.out.println(employee);
+			}
+
+		} catch (SQLException ex) {
+			System.out.println("SQL Exception : " + ex.getMessage());
+			ex.printStackTrace();
+		} catch (Exception ex) {
+			System.out.println("Exception : " + ex.getMessage());
+			ex.printStackTrace();
+		}
+
+		return employee;
 	}
 
 }

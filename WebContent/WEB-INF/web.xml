@@ -118,6 +118,15 @@
 		<url-pattern>/employee/list.html</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>view_employee</servlet-name>
+		<jsp-file>/employee/view.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>view_employee</servlet-name>
+		<url-pattern>/employee/view.html</url-pattern>
+	</servlet-mapping>
+	
 	<!-- EMPLOYEE END -->
 
 
