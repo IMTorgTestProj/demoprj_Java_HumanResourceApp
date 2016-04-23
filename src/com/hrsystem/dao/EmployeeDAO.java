@@ -18,4 +18,6 @@ public interface EmployeeDAO {
 
 	public boolean updateEmployee(Employee employee);
 
+	public List<Employee> searchEmployees(String searchKey);
+
 }

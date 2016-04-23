@@ -52,6 +52,13 @@ $(document).ready(function() {
 		$('input[name="firstname"').focus();
 	});
 	
+	$('input[name="searchclear"]').click(function(){		
+		$('input[name="searchemployee"]').val('');
+		
+		$('table>tbody tr').remove();
+		
+	});
+	
 	$('form').bind('submit', function() {
 		$(this).find(':input').removeAttr('disabled');
 	});

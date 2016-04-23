@@ -51,7 +51,7 @@
 		<servlet-name>list_job</servlet-name>
 		<url-pattern>/job/list.html</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>view_job</servlet-name>
 		<jsp-file>/job/view.jsp</jsp-file>
@@ -60,7 +60,7 @@
 		<servlet-name>view_job</servlet-name>
 		<url-pattern>/job/view.html</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>edit_job</servlet-name>
 		<jsp-file>/job/edit.jsp</jsp-file>
@@ -69,7 +69,7 @@
 		<servlet-name>edit_job</servlet-name>
 		<url-pattern>/job/edit.html</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>delete_job</servlet-name>
 		<jsp-file>/job/delete.jsp</jsp-file>
@@ -78,7 +78,7 @@
 		<servlet-name>delete_job</servlet-name>
 		<url-pattern>/job/delete.html</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>search_job</servlet-name>
 		<jsp-file>/job/search.jsp</jsp-file>
@@ -89,7 +89,7 @@
 	</servlet-mapping>
 
 	<!-- JOB END -->
-	
+
 	<!-- EMPLOYEE START -->
 	<servlet>
 		<servlet-name>EmployeeController</servlet-name>
@@ -108,7 +108,7 @@
 		<servlet-name>add_employee</servlet-name>
 		<url-pattern>/employee/add.html</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>list_employee</servlet-name>
 		<jsp-file>/employee/list.jsp</jsp-file>
@@ -117,7 +117,7 @@
 		<servlet-name>list_employee</servlet-name>
 		<url-pattern>/employee/list.html</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>view_employee</servlet-name>
 		<jsp-file>/employee/view.jsp</jsp-file>
@@ -126,7 +126,7 @@
 		<servlet-name>view_employee</servlet-name>
 		<url-pattern>/employee/view.html</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>delete_employee</servlet-name>
 		<jsp-file>/employee/delete.jsp</jsp-file>
@@ -135,7 +135,7 @@
 		<servlet-name>delete_employee</servlet-name>
 		<url-pattern>/employee/delete.html</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>edit_employee</servlet-name>
 		<jsp-file>/employee/edit.jsp</jsp-file>
@@ -144,7 +144,16 @@
 		<servlet-name>edit_employee</servlet-name>
 		<url-pattern>/employee/edit.html</url-pattern>
 	</servlet-mapping>
-	
+
+	<servlet>
+		<servlet-name>search_employee</servlet-name>
+		<jsp-file>/employee/search.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>search_employee</servlet-name>
+		<url-pattern>/employee/search.html</url-pattern>
+	</servlet-mapping>
+
 	<!-- EMPLOYEE END -->
 
 

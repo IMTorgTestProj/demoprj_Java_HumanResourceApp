@@ -13,7 +13,6 @@ import javax.servlet.http.HttpSession;
 import com.hrsystem.dao.EmployeeDAO;
 import com.hrsystem.dao.EmployeeDAOImpl;
 import com.hrsystem.model.Employee;
-import com.hrsystem.model.Job;
 import com.hrsystem.util.HRUtil;
 
 public class EmployeeController extends HttpServlet {
@@ -71,6 +70,14 @@ public class EmployeeController extends HttpServlet {
 			int employeeId = Integer.parseInt(request.getParameter("id"));
 			employeeDAO.deleteEmployee(employeeId);
 			page = "Controller?action=list";
+		} else if (action.equals(HRUtil.Action.SEARCH)) {
+			String searchKey = request.getParameter("searchemployee");
+
+			if (searchKey.trim().length() > 0)
+				request.setAttribute("employees", employeeDAO.searchEmployees(searchKey));
+
+			page = "search.html";
+
 		}
 
 		if (action.equals(HRUtil.Action.ADD) || action.equals(HRUtil.Action.REMOVE)) {
@@ -83,8 +90,7 @@ public class EmployeeController extends HttpServlet {
 	}
 
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)	throws ServletException, IOException {
 
 		String page = request.getContextPath();
 		String action = request.getParameter("action");
@@ -110,7 +116,7 @@ public class EmployeeController extends HttpServlet {
 			Employee employee = new Employee();
 
 			employee.setEmployeeId(Integer.parseInt(request.getParameter("id")));
-			
+
 			employee.setFirstName(request.getParameter("firstname"));
 			employee.setLastName(request.getParameter("lastname"));
 			employee.setInitMiddle(request.getParameter("initial"));
@@ -118,7 +124,7 @@ public class EmployeeController extends HttpServlet {
 			employee.setLocation(request.getParameter("location"));
 			employee.setSalaryType(request.getParameter("salarytype"));
 			employee.setUpdatedDate(new Date());
-			
+
 			System.out.println(employee);
 			employeeDAO.updateEmployee(employee);
 

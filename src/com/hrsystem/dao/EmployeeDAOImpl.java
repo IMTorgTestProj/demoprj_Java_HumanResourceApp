@@ -211,4 +211,41 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
 	}
 
+	@Override
+	public List<Employee> searchEmployees(String search) {
+		List<Employee> employees = new ArrayList<Employee>();
+
+		try {
+			String sqlQuery = "select * from employee where ssn like '%" + search + "%'";
+			PreparedStatement pStatement = connection.prepareStatement(sqlQuery);
+
+			ResultSet rs = pStatement.executeQuery(sqlQuery);
+
+			while (rs.next()) {
+				Employee employee = new Employee();
+
+				employee.setEmployeeId(rs.getInt("employeeid"));
+				employee.setFirstName(rs.getString("firstname"));
+				employee.setLastName(rs.getString("lastname"));
+				employee.setSsn(rs.getString("ssn"));
+				employee.setInitMiddle(rs.getString("initmiddle"));
+				employee.setLocation(rs.getString("location"));
+				employee.setSalaryType(rs.getString("salarytype"));
+
+				// System.out.println(employee);
+				employees.add(employee);
+
+			}
+
+		} catch (SQLException ex) {
+			System.out.println("SQL Exception : " + ex.getMessage());
+			ex.printStackTrace();
+		} catch (Exception ex) {
+			System.out.println("Exception : " + ex.getMessage());
+			ex.printStackTrace();
+		}
+
+		return employees;
+	}
+
 }
