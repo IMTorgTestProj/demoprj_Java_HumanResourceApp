@@ -136,6 +136,15 @@
 		<url-pattern>/employee/delete.html</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>edit_employee</servlet-name>
+		<jsp-file>/employee/edit.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>edit_employee</servlet-name>
+		<url-pattern>/employee/edit.html</url-pattern>
+	</servlet-mapping>
+	
 	<!-- EMPLOYEE END -->
 
 

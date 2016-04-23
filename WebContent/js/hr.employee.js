@@ -51,5 +51,10 @@ $(document).ready(function() {
 
 		$('input[name="firstname"').focus();
 	});
+	
+	$('form').bind('submit', function() {
+		$(this).find(':input').removeAttr('disabled');
+	});
+
 
 });

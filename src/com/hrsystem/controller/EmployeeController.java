@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import com.hrsystem.dao.EmployeeDAO;
 import com.hrsystem.dao.EmployeeDAOImpl;
 import com.hrsystem.model.Employee;
+import com.hrsystem.model.Job;
 import com.hrsystem.util.HRUtil;
 
 public class EmployeeController extends HttpServlet {
@@ -21,6 +22,7 @@ public class EmployeeController extends HttpServlet {
 	private static final String ADD_PAGE = "/employee/add.html";
 	private static final String LIST_PAGE = "/employee/list.html";
 	private static final String VIEW_PAGE = "/employee/view.html";
+	private static final String EDIT_PAGE = "/employee/edit.html";
 	private static final String DELETE_PAGE = "/employee/delete.html";
 
 	private EmployeeDAO employeeDAO;
@@ -53,6 +55,14 @@ public class EmployeeController extends HttpServlet {
 			int employeeId = Integer.parseInt(request.getParameter("id"));
 			request.setAttribute("employee", employeeDAO.getEmployeeById(employeeId));
 			page = VIEW_PAGE;
+		} else if (action.equals(HRUtil.Action.EDIT)) {
+			if (session.getAttribute("location") == null) {
+				session.setAttribute("location", employeeDAO.loadLocation());
+			}
+
+			int employeeId = Integer.parseInt(request.getParameter("id"));
+			request.setAttribute("employee", employeeDAO.getEmployeeById(employeeId));
+			page = EDIT_PAGE;
 		} else if (action.equals(HRUtil.Action.DELETE)) {
 			int employeeId = Integer.parseInt(request.getParameter("id"));
 			request.setAttribute("employee", employeeDAO.getEmployeeById(employeeId));
@@ -92,10 +102,27 @@ public class EmployeeController extends HttpServlet {
 			employee.setSalaryType(request.getParameter("salarytype"));
 			employee.setCreatedDate(new Date());
 
-			//System.out.println(employee);
+			// System.out.println(employee);
 			employeeDAO.addEmployee(employee);
 
 			page += ADD_PAGE;
+		} else if (action.equals(HRUtil.Action.UPDATE)) {
+			Employee employee = new Employee();
+
+			employee.setEmployeeId(Integer.parseInt(request.getParameter("id")));
+			
+			employee.setFirstName(request.getParameter("firstname"));
+			employee.setLastName(request.getParameter("lastname"));
+			employee.setInitMiddle(request.getParameter("initial"));
+			employee.setSsn(request.getParameter("ssn"));
+			employee.setLocation(request.getParameter("location"));
+			employee.setSalaryType(request.getParameter("salarytype"));
+			employee.setUpdatedDate(new Date());
+			
+			System.out.println(employee);
+			employeeDAO.updateEmployee(employee);
+
+			page = "Controller?action=list";
 		}
 
 		response.sendRedirect(page);

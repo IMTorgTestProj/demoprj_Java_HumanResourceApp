@@ -177,4 +177,38 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
 	}
 
+	@Override
+	public boolean updateEmployee(Employee employee) {
+		boolean actionResult = false;
+
+		try {
+			String sqlQuery = "update employee set firstname=?, lastname=?, initmiddle=?, ssn=?, location=?, salarytype = ?, updateddate=? where employeeid = ?";
+			PreparedStatement pStatement = connection.prepareStatement(sqlQuery);
+
+			pStatement.clearParameters();
+
+			pStatement.setString(1, employee.getFirstName());
+			pStatement.setString(2, employee.getLastName());
+			pStatement.setString(3, employee.getInitMiddle());
+			pStatement.setString(4, employee.getSsn());
+			pStatement.setString(5, employee.getLocation());
+			pStatement.setString(6, employee.getSalaryType());
+			pStatement.setTimestamp(7, new java.sql.Timestamp(employee.getUpdatedDate().getTime()));
+			pStatement.setInt(8, employee.getEmployeeId());
+
+			pStatement.executeUpdate();
+			actionResult = true;
+
+		} catch (SQLException ex) {
+			System.out.println("SQL Exception : " + ex.getMessage());
+			ex.printStackTrace();
+		} catch (Exception ex) {
+			System.out.println("Exception : " + ex.getMessage());
+			ex.printStackTrace();
+		}
+
+		return actionResult;
+
+	}
+
 }
