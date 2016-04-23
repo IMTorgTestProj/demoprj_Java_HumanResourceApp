@@ -31,6 +31,15 @@ $(document).ready(function() {
 		}
 
 	});
+	
+	$('input[name="deleteemployeebtn"]').click(function() {
+		var lastname = $('input[name="lastname"').val();
+		var firstname = $('input[name="firstname"').val();
+		var fullname = lastname.trim() + " " + firstname.trim();
+		if (confirm("Are you sure that you want to delete Employee: " + fullname, "Alert")) {
+			$('form').submit();
+		}
+	});
 
 	$('input[name="clear"]').click(function() {
 		$('input[name="firstname"').val('');

@@ -13,5 +13,7 @@ public interface EmployeeDAO {
 	public List<Employee> getAllEmployees();
 	
 	public Employee getEmployeeById(int employeeId);
+	
+	public boolean deleteEmployee(int employeeId);
 
 }

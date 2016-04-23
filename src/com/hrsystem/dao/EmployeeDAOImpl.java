@@ -99,8 +99,8 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 				employee.setInitMiddle(rs.getString("initmiddle"));
 				employee.setLocation(rs.getString("location"));
 				employee.setSalaryType(rs.getString("salarytype"));
-				
-				//System.out.println(employee);
+
+				// System.out.println(employee);
 				employees.add(employee);
 			}
 
@@ -118,7 +118,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	@Override
 	public Employee getEmployeeById(int employeeId) {
 		Employee employee = new Employee();
-		
+
 		try {
 			String sqlQuery = "select * from employee where employeeid=?";
 			PreparedStatement pStatement = connection.prepareStatement(sqlQuery);
@@ -128,7 +128,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 			ResultSet rs = pStatement.executeQuery();
 
 			if (rs.next()) {
-				
+
 				employee.setEmployeeId(rs.getInt("employeeid"));
 				employee.setFirstName(rs.getString("firstname"));
 				employee.setLastName(rs.getString("lastname"));
@@ -136,7 +136,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 				employee.setInitMiddle(rs.getString("initmiddle"));
 				employee.setLocation(rs.getString("location"));
 				employee.setSalaryType(rs.getString("salarytype"));
-				
+
 				// System.out.println(employee);
 			}
 
@@ -149,6 +149,32 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		}
 
 		return employee;
+	}
+
+	@Override
+	public boolean deleteEmployee(int employeeId) {
+		boolean actionResult = false;
+
+		try {
+			String sqlQuery = "delete from employee where employeeId=?";
+			PreparedStatement pStatement = connection.prepareStatement(sqlQuery);
+
+			pStatement.clearParameters();
+			pStatement.setInt(1, employeeId);
+
+			pStatement.executeUpdate();
+			actionResult = true;
+
+		} catch (SQLException ex) {
+			System.out.println("SQL Exception : " + ex.getMessage());
+			ex.printStackTrace();
+		} catch (Exception ex) {
+			System.out.println("Exception : " + ex.getMessage());
+			ex.printStackTrace();
+		}
+
+		return actionResult;
+
 	}
 
 }

@@ -21,6 +21,7 @@ public class EmployeeController extends HttpServlet {
 	private static final String ADD_PAGE = "/employee/add.html";
 	private static final String LIST_PAGE = "/employee/list.html";
 	private static final String VIEW_PAGE = "/employee/view.html";
+	private static final String DELETE_PAGE = "/employee/delete.html";
 
 	private EmployeeDAO employeeDAO;
 
@@ -30,7 +31,8 @@ public class EmployeeController extends HttpServlet {
 	}
 
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String pageContext = request.getContextPath();
 		String page = "";
 		String action = request.getParameter("action");
@@ -51,9 +53,17 @@ public class EmployeeController extends HttpServlet {
 			int employeeId = Integer.parseInt(request.getParameter("id"));
 			request.setAttribute("employee", employeeDAO.getEmployeeById(employeeId));
 			page = VIEW_PAGE;
+		} else if (action.equals(HRUtil.Action.DELETE)) {
+			int employeeId = Integer.parseInt(request.getParameter("id"));
+			request.setAttribute("employee", employeeDAO.getEmployeeById(employeeId));
+			page = DELETE_PAGE;
+		} else if (action.equals(HRUtil.Action.REMOVE)) {
+			int employeeId = Integer.parseInt(request.getParameter("id"));
+			employeeDAO.deleteEmployee(employeeId);
+			page = "Controller?action=list";
 		}
 
-		if (action.equals(HRUtil.Action.ADD)) {
+		if (action.equals(HRUtil.Action.ADD) || action.equals(HRUtil.Action.REMOVE)) {
 			response.sendRedirect(page);
 		} else {
 			RequestDispatcher view = request.getRequestDispatcher(page);
@@ -63,7 +73,8 @@ public class EmployeeController extends HttpServlet {
 	}
 
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
 		String page = request.getContextPath();
 		String action = request.getParameter("action");
@@ -81,7 +92,7 @@ public class EmployeeController extends HttpServlet {
 			employee.setSalaryType(request.getParameter("salarytype"));
 			employee.setCreatedDate(new Date());
 
-			System.out.println(employee);
+			//System.out.println(employee);
 			employeeDAO.addEmployee(employee);
 
 			page += ADD_PAGE;

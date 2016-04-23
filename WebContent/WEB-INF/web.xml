@@ -127,6 +127,15 @@
 		<url-pattern>/employee/view.html</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>delete_employee</servlet-name>
+		<jsp-file>/employee/delete.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>delete_employee</servlet-name>
+		<url-pattern>/employee/delete.html</url-pattern>
+	</servlet-mapping>
+	
 	<!-- EMPLOYEE END -->
 
 
