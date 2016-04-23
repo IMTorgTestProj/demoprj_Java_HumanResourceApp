@@ -27,7 +27,7 @@
 				<h4>View Employee</h4>
 			</div>
 			<div id="container_body">
-				<form method="POST" action="Controller" class="form-horizontal" role="form">
+				<form class="form-horizontal" role="form">
 					<input type="hidden" name="action" value="add" />
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="firstname">First Name:</label>
