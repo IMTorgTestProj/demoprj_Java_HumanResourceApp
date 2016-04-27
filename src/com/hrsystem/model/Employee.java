@@ -1,9 +1,11 @@
 package com.hrsystem.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Employee {
+public class Employee implements Serializable {
 
+	private static final long serialVersionUID = 1L;
 	private int employeeId;
 	private String ssn;
 	private String firstName;
@@ -89,8 +91,9 @@ public class Employee {
 
 	@Override
 	public String toString() {
-		return "Employee [employeeId=" + employeeId + ", ssn=" + ssn + ", firstName=" + firstName + ", lastName=" + lastName + ", initMiddle=" + initMiddle + ", location=" + location + ", salaryType="
-				+ salaryType + ", createdDate=" + createdDate + ", updatedDate=" + updatedDate + "]";
+		return "Employee [employeeId=" + employeeId + ", ssn=" + ssn + ", firstName=" + firstName + ", lastName="
+				+ lastName + ", initMiddle=" + initMiddle + ", location=" + location + ", salaryType=" + salaryType
+				+ ", createdDate=" + createdDate + ", updatedDate=" + updatedDate + "]";
 	}
 
 }

@@ -22,7 +22,7 @@
 	<li><a class="dropdown-toggle" data-toggle="dropdown" href="#">Assignment<span
 			class="caret"></span></a>
 		<ul class="dropdown-menu">
-			<li><a href="<%=contextPath%>/jobassignment.html">New
+			<li><a href="<%=contextPath%>/assignment/Controller?action=add">New
 					Assignment</a></li>
 			<li><a href="<%=contextPath%>/jobassignmentlist.html">Employee
 					Assignment</a></li>

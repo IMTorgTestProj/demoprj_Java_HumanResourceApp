@@ -20,6 +20,17 @@ public class HRUtil {
 		public static final String SEARCH = "search";
 	}
 
+	public class Ajax {
+		public static final String LOAD_EMP_INFO = "showEmployeeInfo";
+		public static final String LOAD_JOB_INFO = "showJobInfo";
+
+	}
+
+	public class Status {
+		public static final int Active = 1;
+		public static final int Inactive = 0;
+	}
+
 	/* Common Utility Methods */
 	public static String getCurrentDateTime() {
 		DateFormat dateFormat = new SimpleDateFormat(HRUtil.DATE_FORMAT);

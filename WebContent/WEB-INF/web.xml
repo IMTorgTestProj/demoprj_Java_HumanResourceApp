@@ -156,5 +156,26 @@
 
 	<!-- EMPLOYEE END -->
 
+	<!-- ASSIGNMENT START -->
+	<servlet>
+		<servlet-name>AssignmentController</servlet-name>
+		<servlet-class>com.hrsystem.controller.AssignmentController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AssignmentController</servlet-name>
+		<url-pattern>/assignment/Controller</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>add_assignment</servlet-name>
+		<jsp-file>/assignment/add.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>add_assignment</servlet-name>
+		<url-pattern>/assignment/add.html</url-pattern>
+	</servlet-mapping>
+
+	<!-- ASSIGNMENT END -->
+
 
 </web-app>
