@@ -15,5 +15,7 @@ public interface AssignmentDAO {
 	public Job loadJobInfo(int jobId);
 
 	public boolean addAssignment(Assignment assignment);
+	
+	public List<Assignment> getAllJobAssignment(int status);
 
 }

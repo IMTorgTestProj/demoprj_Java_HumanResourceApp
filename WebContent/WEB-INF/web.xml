@@ -175,6 +175,15 @@
 		<url-pattern>/assignment/add.html</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>list_assignment</servlet-name>
+		<jsp-file>/assignment/list.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>list_assignment</servlet-name>
+		<url-pattern>/assignment/list.html</url-pattern>
+	</servlet-mapping>
+
 	<!-- ASSIGNMENT END -->
 
 

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -152,6 +153,52 @@ public class AssignmentDAOImpl implements AssignmentDAO {
 		}
 
 		return actionResult;
+	}
+
+	@Override
+	public List<Assignment> getAllJobAssignment(int status) {
+		List<Assignment> jobAssignments = new ArrayList<Assignment>();
+
+		try {
+			String sqlQuery = "select ja.assignmentid, ja.employeeid, j.jobid, e.firstname, e.lastname, e.initmiddle, j.jobnumber, ja.status from employee e, jobassignment ja, job j where e.employeeid = ja.employeeid and j.jobid = ja.jobid and status = ?";
+
+			PreparedStatement pStatement = connection.prepareStatement(sqlQuery);
+
+			pStatement.clearParameters();
+			pStatement.setInt(1, status);
+
+			ResultSet rs = pStatement.executeQuery();
+
+			while (rs.next()) {
+				Assignment assignment = new Assignment();
+
+				assignment.setAssignmentId(rs.getInt("assignmentid"));
+				
+				assignment.setEmployeeId(rs.getInt("employeeid"));
+				assignment.setFirstName(rs.getString("firstname"));
+				assignment.setLastName(rs.getString("lastname"));
+				assignment.setInitMiddle(rs.getString("initmiddle"));
+
+				assignment.setJobId(rs.getInt("jobid"));
+				assignment.setJobNumber(rs.getString("jobnumber"));
+
+				assignment.setStatus(rs.getInt("status"));
+
+				// System.out.println(job);
+				jobAssignments.add(assignment);
+
+			}
+
+		} catch (SQLException ex) {
+			System.out.println("SQL Exception : " + ex.getMessage());
+			ex.printStackTrace();
+		} catch (Exception ex) {
+			System.out.println("Exception : " + ex.getMessage());
+			ex.printStackTrace();
+		}
+
+		return jobAssignments;
+
 	}
 
 }

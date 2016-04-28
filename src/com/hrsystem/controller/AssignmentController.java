@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -26,6 +27,7 @@ public class AssignmentController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	private static final String ADD_PAGE = "/assignment/add.html";
+	private static final String LIST_PAGE = "/assignment/list.html";
 
 	private AssignmentDAO assignmentDAO;
 	private EmployeeDAO employeeDAO;
@@ -109,10 +111,17 @@ public class AssignmentController extends HttpServlet {
 
 			response.getWriter().write(data.toString());
 
+		} else if (action.equals(HRUtil.Action.LIST)) {
+			request.setAttribute("assignments", assignmentDAO.getAllJobAssignment(HRUtil.Status.Active));
+			page = LIST_PAGE;
+
 		}
 
 		if (action.equals(HRUtil.Action.ADD) || action.equals(HRUtil.Action.REMOVE)) {
 			response.sendRedirect(page);
+		} else if(action.equals(HRUtil.Action.LIST)) {
+			RequestDispatcher view = request.getRequestDispatcher(page);
+			view.forward(request, response);
 		}
 	}
 
