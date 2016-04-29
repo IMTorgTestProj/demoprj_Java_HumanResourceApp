@@ -31,7 +31,8 @@ public class JobController extends HttpServlet {
 	}
 
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String pageContext = request.getContextPath();
 		String page = "";
 		String action = request.getParameter("action");
@@ -63,7 +64,7 @@ public class JobController extends HttpServlet {
 
 			if (searchKey.trim().length() > 0)
 				request.setAttribute("jobs", jobDAO.searchJobs(searchKey));
-			
+
 			request.setAttribute("searchKey", searchKey);
 			page = "search.html";
 
@@ -79,7 +80,8 @@ public class JobController extends HttpServlet {
 	}
 
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String page = request.getContextPath();
 		String action = request.getParameter("action");
 		System.out.println("Operation @ POST : " + action);
@@ -118,7 +120,6 @@ public class JobController extends HttpServlet {
 			// RequestDispatcher view = request.getRequestDispatcher(page);
 			// view.forward(request, response);
 		}
-
 		response.sendRedirect(page);
 
 	}

@@ -248,4 +248,33 @@ public class AssignmentDAOImpl implements AssignmentDAO {
 		return assignment;
 	}
 
+	@Override
+	public boolean updateAssignment(Assignment assignment) {
+		boolean actionResult = false;
+
+		try {
+			String sqlQuery = "update jobassignment ja set ja.jobid = ?, updateddate= ? where ja.assignmentid = ?";
+			PreparedStatement pStatement = connection.prepareStatement(sqlQuery);
+
+			pStatement.clearParameters();
+
+			pStatement.setInt(1, assignment.getJobId());
+			pStatement.setTimestamp(2, new java.sql.Timestamp(assignment.getUpdatedDate().getTime()));
+			pStatement.setInt(3, assignment.getAssignmentId());
+			
+			pStatement.executeUpdate();
+			actionResult = true;
+
+		} catch (SQLException ex) {
+			System.out.println("SQL Exception : " + ex.getMessage());
+			ex.printStackTrace();
+		} catch (Exception ex) {
+			System.out.println("Exception : " + ex.getMessage());
+			ex.printStackTrace();
+		}
+
+		return actionResult;
+
+	}
+
 }

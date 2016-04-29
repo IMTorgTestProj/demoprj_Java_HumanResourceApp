@@ -1,12 +1,10 @@
 $(document).ready(function() {
 	
-	
-	
-	$('input[name="addassignmentbtn"]').click(function() {
+	$('input[name="addassignmentbtn"],input[name="updateassignmentbtn"]').click(function() {
 		var employeeId = $('select[name="emp_ssn"]').val();
 		var jobId = $('select[name="sel_jobnumber"]').val();
 		
-		//alert("Click Add : "+employeeId+"\t"+jobId);
+		//alert("Click Update : "+employeeId+"\t"+jobId);
 		var validation = true;
 		
 		if(employeeId == 0){
@@ -20,9 +18,6 @@ $(document).ready(function() {
 		if(validation){
 			$('form').submit();
 		}
-		
-		
-		
 		
 	});
 
@@ -143,5 +138,10 @@ $(document).ready(function() {
 		$('textarea[name="description"]').val('')
 
 	});
+	
+	$('form').bind('submit', function() {
+		$(this).find(':input').removeAttr('disabled');
+	});
+
 
 });

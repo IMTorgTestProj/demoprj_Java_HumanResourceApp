@@ -29,6 +29,7 @@ public class AssignmentController extends HttpServlet {
 	private static final String ADD_PAGE = "/assignment/add.html";
 	private static final String LIST_PAGE = "/assignment/list.html";
 	private static final String VIEW_PAGE = "/assignment/view.html";
+	private static final String EDIT_PAGE = "/assignment/edit.html";
 
 	private AssignmentDAO assignmentDAO;
 	private EmployeeDAO employeeDAO;
@@ -120,11 +121,23 @@ public class AssignmentController extends HttpServlet {
 			int assignmentId = Integer.parseInt(request.getParameter("id"));
 			request.setAttribute("assignment", assignmentDAO.getJobAssignment(assignmentId));
 			page = VIEW_PAGE;
+		} else if (action.equals(HRUtil.Action.EDIT)) {
+			int assignmentId = Integer.parseInt(request.getParameter("id"));
+
+			Assignment assignment = assignmentDAO.getJobAssignment(assignmentId);
+
+			request.setAttribute("assignment", assignment);
+
+			List<Job> jobs = assignmentDAO.loadMapJob(assignment.getEmployeeId());
+			request.setAttribute("jobs", jobs);
+
+			page = EDIT_PAGE;
 		}
 
 		if (action.equals(HRUtil.Action.ADD) || action.equals(HRUtil.Action.REMOVE)) {
 			response.sendRedirect(page);
-		} else if (action.equals(HRUtil.Action.LIST) || action.equals(HRUtil.Action.VIEW)) {
+		} else if (action.equals(HRUtil.Action.LIST) || action.equals(HRUtil.Action.VIEW)
+				|| action.equals(HRUtil.Action.EDIT)) {
 			RequestDispatcher view = request.getRequestDispatcher(page);
 			view.forward(request, response);
 		}
@@ -154,8 +167,24 @@ public class AssignmentController extends HttpServlet {
 
 			page += ADD_PAGE;
 
-		}
+		} else if (action.equals(HRUtil.Action.UPDATE)) {
 
+			int assignmentId = Integer.parseInt(request.getParameter("id"));
+			int employeeId = Integer.parseInt(request.getParameter("emp_ssn"));
+			int jobId = Integer.parseInt(request.getParameter("sel_jobnumber"));
+
+			// System.out.println(employeeId + "\t" + jobId);
+			Assignment assignment = new Assignment();
+			assignment.setAssignmentId(assignmentId);
+			assignment.setEmployeeId(employeeId);
+			assignment.setJobId(jobId);
+			assignment.setStatus(HRUtil.Status.Active);
+			assignment.setUpdatedDate(new Date());
+
+			assignmentDAO.updateAssignment(assignment);
+
+			page = "Controller?action=list";
+		}
 		response.sendRedirect(page);
 	}
 

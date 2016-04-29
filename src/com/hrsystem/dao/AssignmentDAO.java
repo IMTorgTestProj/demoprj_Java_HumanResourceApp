@@ -19,5 +19,7 @@ public interface AssignmentDAO {
 	public List<Assignment> getAllJobAssignment(int status);
 
 	public Assignment getJobAssignment(int assignmentId);
+	
+	public boolean updateAssignment(Assignment assignment);
 
 }
