@@ -23,14 +23,14 @@
 				<h4>View Job Assignment</h4>
 			</div>
 			<div id="container_body">
-				<form method="POST" action="Controller" class="form-horizontal" role="form">
+				<form class="form-horizontal" role="form">
 					<input type="hidden" name="action" value="add" />
 					<fieldset>
 						<legend>Employee Information</legend>
 						<div class="form-horizontal">
 							<div class="form-group">
 								<label class="control-label col-sm-1" for="ssn">SSN:</label>
-								<div class="col-sm-4">									
+								<div class="col-sm-4">
 									<input type="text" class="form-control" id="ssn" name="ssn" value="${assignment.ssn }" disabled>
 								</div>
 							</div>
@@ -84,7 +84,7 @@
 								</div>
 								<div class="row row_n">
 									<div class="col-sm-8">
-										<input type="text" class="form-control" id="salarytype" name="salarytype" value="${assignment.salaryType }" disabled>
+										<input type="text" class="form-control" id="salarytype" name="salarytype" value="${assignment.salaryType}" disabled>
 									</div>
 								</div>
 							</div>
@@ -96,8 +96,8 @@
 						<div class="form-horizontal">
 							<div class="form-group">
 								<label class="control-label col-sm-1" for="jobnumber">Job Number:</label>
-								<div class="col-sm-4">									
-									<input type="text" class="form-control" id="jobnumber" name="jobnumber" value="${assignment.jobNumber }" disabled>
+								<div class="col-sm-4">
+									<input type="text" class="form-control" id="jobnumber" name="jobnumber" value="${assignment.jobNumber}" disabled>
 								</div>
 							</div>
 						</div>
