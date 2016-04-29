@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -173,7 +172,7 @@ public class AssignmentDAOImpl implements AssignmentDAO {
 				Assignment assignment = new Assignment();
 
 				assignment.setAssignmentId(rs.getInt("assignmentid"));
-				
+
 				assignment.setEmployeeId(rs.getInt("employeeid"));
 				assignment.setFirstName(rs.getString("firstname"));
 				assignment.setLastName(rs.getString("lastname"));
@@ -199,6 +198,54 @@ public class AssignmentDAOImpl implements AssignmentDAO {
 
 		return jobAssignments;
 
+	}
+
+	@Override
+	public Assignment getJobAssignment(int assignmentId) {
+
+		Assignment assignment = new Assignment();
+
+		try {
+			String sqlQuery = "select ja.assignmentid, ja.employeeid, e.ssn, e.firstname, e.lastname, e.initmiddle, e.location, e.salarytype, j.jobid, j.jobnumber, j.name, j.description, ja.status  from employee e, jobassignment ja, job j where e.employeeid = ja.employeeid and j.jobid = ja.jobid and ja.assignmentid = ?";
+
+			PreparedStatement pStatement = connection.prepareStatement(sqlQuery);
+
+			pStatement.clearParameters();
+			pStatement.setInt(1, assignmentId);
+
+			ResultSet rs = pStatement.executeQuery();
+
+			while (rs.next()) {
+
+				assignment.setAssignmentId(rs.getInt("assignmentid"));
+
+				assignment.setEmployeeId(rs.getInt("employeeid"));
+				assignment.setSsn(rs.getString("ssn"));
+				assignment.setFirstName(rs.getString("firstname"));
+				assignment.setLastName(rs.getString("lastname"));
+				assignment.setInitMiddle(rs.getString("initmiddle"));
+				assignment.setLocation(rs.getString("location"));
+				assignment.setSalaryType(rs.getString("salarytype"));
+
+				assignment.setJobId(rs.getInt("jobid"));
+				assignment.setJobNumber(rs.getString("jobnumber"));
+				assignment.setJobName(rs.getString("name"));
+				assignment.setDescription(rs.getString("description"));
+
+				assignment.setStatus(rs.getInt("status"));
+
+				// System.out.println(job);
+			}
+
+		} catch (SQLException ex) {
+			System.out.println("SQL Exception : " + ex.getMessage());
+			ex.printStackTrace();
+		} catch (Exception ex) {
+			System.out.println("Exception : " + ex.getMessage());
+			ex.printStackTrace();
+		}
+
+		return assignment;
 	}
 
 }

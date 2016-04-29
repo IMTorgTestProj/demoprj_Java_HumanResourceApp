@@ -12,11 +12,17 @@ public class Assignment {
 	private Date updatedDate;
 
 	// Employee Data
+	private String ssn;
 	private String firstName;
 	private String lastName;
 	private String initMiddle;
+	private String location;
+	private String salaryType;
+
 	// Job Data
 	private String jobNumber;
+	private String jobName;
+	private String description;
 
 	public int getAssignmentId() {
 		return assignmentId;
@@ -66,6 +72,14 @@ public class Assignment {
 		this.updatedDate = updatedDate;
 	}
 
+	public String getSsn() {
+		return ssn;
+	}
+
+	public void setSsn(String ssn) {
+		this.ssn = ssn;
+	}
+
 	public String getFirstName() {
 		return firstName;
 	}
@@ -90,12 +104,44 @@ public class Assignment {
 		this.initMiddle = initMiddle;
 	}
 
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+	public String getSalaryType() {
+		return salaryType;
+	}
+
+	public void setSalaryType(String salaryType) {
+		this.salaryType = salaryType;
+	}
+
 	public String getJobNumber() {
 		return jobNumber;
 	}
 
 	public void setJobNumber(String jobNumber) {
 		this.jobNumber = jobNumber;
+	}
+
+	public String getJobName() {
+		return jobName;
+	}
+
+	public void setJobName(String jobName) {
+		this.jobName = jobName;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 }

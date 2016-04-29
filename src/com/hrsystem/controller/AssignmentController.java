@@ -28,6 +28,7 @@ public class AssignmentController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String ADD_PAGE = "/assignment/add.html";
 	private static final String LIST_PAGE = "/assignment/list.html";
+	private static final String VIEW_PAGE = "/assignment/view.html";
 
 	private AssignmentDAO assignmentDAO;
 	private EmployeeDAO employeeDAO;
@@ -115,11 +116,15 @@ public class AssignmentController extends HttpServlet {
 			request.setAttribute("assignments", assignmentDAO.getAllJobAssignment(HRUtil.Status.Active));
 			page = LIST_PAGE;
 
+		} else if (action.equals(HRUtil.Action.VIEW)) {
+			int assignmentId = Integer.parseInt(request.getParameter("id"));
+			request.setAttribute("assignment", assignmentDAO.getJobAssignment(assignmentId));
+			page = VIEW_PAGE;
 		}
 
 		if (action.equals(HRUtil.Action.ADD) || action.equals(HRUtil.Action.REMOVE)) {
 			response.sendRedirect(page);
-		} else if(action.equals(HRUtil.Action.LIST)) {
+		} else if (action.equals(HRUtil.Action.LIST) || action.equals(HRUtil.Action.VIEW)) {
 			RequestDispatcher view = request.getRequestDispatcher(page);
 			view.forward(request, response);
 		}

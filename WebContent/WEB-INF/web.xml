@@ -183,6 +183,16 @@
 		<servlet-name>list_assignment</servlet-name>
 		<url-pattern>/assignment/list.html</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>view_assignment</servlet-name>
+		<jsp-file>/assignment/view.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>view_assignment</servlet-name>
+		<url-pattern>/assignment/view.html</url-pattern>
+	</servlet-mapping>
+	
 
 	<!-- ASSIGNMENT END -->
 

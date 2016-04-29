@@ -12,6 +12,11 @@ function showEmployeeList() {
 	window.location.assign(getContextPath() + "/employee/Controller?action=list");
 }
 
+function showAssignmentList() {
+	window.location.assign(getContextPath() + "/assignment/Controller?action=list");
+}
+
+
 function getContextPath() {
 	return window.location.pathname.substring(0, window.location.pathname.indexOf("/", 2));
 }
