@@ -6,10 +6,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.hrsystem.model.Employee;
 import com.hrsystem.util.DBUtil;
+import com.hrsystem.util.HRUtil;
 
 public class EmployeeDAOImpl implements EmployeeDAO {
 
@@ -162,7 +164,22 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 			pStatement.clearParameters();
 			pStatement.setInt(1, employeeId);
 
-			pStatement.executeUpdate();
+			int count = pStatement.executeUpdate();
+
+			if (count == 1) {
+				String updateQuery = "update jobassignment ja set status = ?, updateddate= ? where ja.employeeid = ? and status = ?";
+				PreparedStatement pStatement1 = connection.prepareStatement(updateQuery);
+
+				pStatement1.clearParameters();
+
+				pStatement1.setInt(1, HRUtil.Status.Inactive);
+				pStatement1.setTimestamp(2, new java.sql.Timestamp((new Date()).getTime()));
+				pStatement1.setInt(3, employeeId);
+				pStatement1.setInt(4, HRUtil.Status.Active);
+
+				pStatement1.executeUpdate();
+			}
+
 			actionResult = true;
 
 		} catch (SQLException ex) {

@@ -16,7 +16,6 @@ public class HRUtil {
 		public static final String EDIT = "edit";
 		public static final String UPDATE = "update";
 		public static final String DELETE = "delete";
-		public static final String REMOVE = "remove";
 		public static final String SEARCH = "search";
 	}
 

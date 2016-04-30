@@ -66,10 +66,6 @@ public class EmployeeController extends HttpServlet {
 			int employeeId = Integer.parseInt(request.getParameter("id"));
 			request.setAttribute("employee", employeeDAO.getEmployeeById(employeeId));
 			page = DELETE_PAGE;
-		} else if (action.equals(HRUtil.Action.REMOVE)) {
-			int employeeId = Integer.parseInt(request.getParameter("id"));
-			employeeDAO.deleteEmployee(employeeId);
-			page = "Controller?action=list";
 		} else if (action.equals(HRUtil.Action.SEARCH)) {
 			String searchKey = request.getParameter("searchemployee");
 
@@ -77,20 +73,15 @@ public class EmployeeController extends HttpServlet {
 				request.setAttribute("employees", employeeDAO.searchEmployees(searchKey));
 
 			page = "search.html";
-
 		}
-
-		if (action.equals(HRUtil.Action.ADD) || action.equals(HRUtil.Action.REMOVE)) {
-			response.sendRedirect(page);
-		} else {
-			RequestDispatcher view = request.getRequestDispatcher(page);
-			view.forward(request, response);
-		}
-
+		RequestDispatcher view = request.getRequestDispatcher(page);
+		view.forward(request, response);
+	
 	}
 
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)	throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
 		String page = request.getContextPath();
 		String action = request.getParameter("action");
@@ -128,6 +119,10 @@ public class EmployeeController extends HttpServlet {
 			System.out.println(employee);
 			employeeDAO.updateEmployee(employee);
 
+			page = "Controller?action=list";
+		} else if (action.equals(HRUtil.Action.DELETE)) {
+			int employeeId = Integer.parseInt(request.getParameter("id"));
+			employeeDAO.deleteEmployee(employeeId);
 			page = "Controller?action=list";
 		}
 

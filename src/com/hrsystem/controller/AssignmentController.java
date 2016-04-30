@@ -138,7 +138,7 @@ public class AssignmentController extends HttpServlet {
 			page = DELETE_PAGE;
 		}
 
-		if (action.equals(HRUtil.Action.ADD) || action.equals(HRUtil.Action.REMOVE)) {
+		if (action.equals(HRUtil.Action.ADD)) {
 			response.sendRedirect(page);
 		} else if (action.equals(HRUtil.Action.LIST) || action.equals(HRUtil.Action.VIEW)
 				|| action.equals(HRUtil.Action.EDIT) || action.equals(HRUtil.Action.DELETE)) {
