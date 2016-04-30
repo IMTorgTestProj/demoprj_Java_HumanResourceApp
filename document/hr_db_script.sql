@@ -25,14 +25,14 @@ CREATE TABLE IF NOT EXISTS `job` (
   PRIMARY KEY (`jobid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
 CREATE TABLE IF NOT EXISTS `jobassignment` (
-  `employeeid` int(10) NOT NULL,
-  `jobid` int(10) NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT '0',
+  `assignmentid` int(10) NOT NULL AUTO_INCREMENT,
+  `employeeid` int(10) NOT NULL DEFAULT '0',
+  `jobid` int(10) NOT NULL DEFAULT '0',
+  `status` tinyint(1) NOT NULL DEFAULT '1',
   `createddate` datetime DEFAULT NULL,
   `updateddate` datetime DEFAULT NULL,
-  PRIMARY KEY (`employeeid`,`jobid`)
+  PRIMARY KEY (`assignmentid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE IF NOT EXISTS `location` (
