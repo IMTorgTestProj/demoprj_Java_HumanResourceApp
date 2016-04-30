@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
+	<display-name>hrsystem</display-name>
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+
+	<servlet>
+		<servlet-name>home</servlet-name>
+		<jsp-file>/home.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>home</servlet-name>
+		<url-pattern>/home.html</url-pattern>
+	</servlet-mapping>
+
+
+	<!-- JOB START -->
+	<servlet>
+		<servlet-name>JobController</servlet-name>
+		<servlet-class>com.hrsystem.controller.JobController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>JobController</servlet-name>
+		<url-pattern>/job/Controller</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>add_job</servlet-name>
+		<jsp-file>/job/add.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>add_job</servlet-name>
+		<url-pattern>/job/add.html</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>list_job</servlet-name>
+		<jsp-file>/job/list.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>list_job</servlet-name>
+		<url-pattern>/job/list.html</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>view_job</servlet-name>
+		<jsp-file>/job/view.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>view_job</servlet-name>
+		<url-pattern>/job/view.html</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>edit_job</servlet-name>
+		<jsp-file>/job/edit.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>edit_job</servlet-name>
+		<url-pattern>/job/edit.html</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>delete_job</servlet-name>
+		<jsp-file>/job/delete.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>delete_job</servlet-name>
+		<url-pattern>/job/delete.html</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>search_job</servlet-name>
+		<jsp-file>/job/search.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>search_job</servlet-name>
+		<url-pattern>/job/search.html</url-pattern>
+	</servlet-mapping>
+
+	<!-- JOB END -->
+
+	<!-- EMPLOYEE START -->
+	<servlet>
+		<servlet-name>EmployeeController</servlet-name>
+		<servlet-class>com.hrsystem.controller.EmployeeController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>EmployeeController</servlet-name>
+		<url-pattern>/employee/Controller</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>add_employee</servlet-name>
+		<jsp-file>/employee/add.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>add_employee</servlet-name>
+		<url-pattern>/employee/add.html</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>list_employee</servlet-name>
+		<jsp-file>/employee/list.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>list_employee</servlet-name>
+		<url-pattern>/employee/list.html</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>view_employee</servlet-name>
+		<jsp-file>/employee/view.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>view_employee</servlet-name>
+		<url-pattern>/employee/view.html</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>delete_employee</servlet-name>
+		<jsp-file>/employee/delete.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>delete_employee</servlet-name>
+		<url-pattern>/employee/delete.html</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>edit_employee</servlet-name>
+		<jsp-file>/employee/edit.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>edit_employee</servlet-name>
+		<url-pattern>/employee/edit.html</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>search_employee</servlet-name>
+		<jsp-file>/employee/search.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>search_employee</servlet-name>
+		<url-pattern>/employee/search.html</url-pattern>
+	</servlet-mapping>
+
+	<!-- EMPLOYEE END -->
+
+	<!-- ASSIGNMENT START -->
+	<servlet>
+		<servlet-name>AssignmentController</servlet-name>
+		<servlet-class>com.hrsystem.controller.AssignmentController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AssignmentController</servlet-name>
+		<url-pattern>/assignment/Controller</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>add_assignment</servlet-name>
+		<jsp-file>/assignment/add.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>add_assignment</servlet-name>
+		<url-pattern>/assignment/add.html</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>list_assignment</servlet-name>
+		<jsp-file>/assignment/list.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>list_assignment</servlet-name>
+		<url-pattern>/assignment/list.html</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>view_assignment</servlet-name>
+		<jsp-file>/assignment/view.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>view_assignment</servlet-name>
+		<url-pattern>/assignment/view.html</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>edit_assignment</servlet-name>
+		<jsp-file>/assignment/edit.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>edit_assignment</servlet-name>
+		<url-pattern>/assignment/edit.html</url-pattern>
+	</servlet-mapping>
+		
+	<servlet>
+		<servlet-name>delete_assignment</servlet-name>
+		<jsp-file>/assignment/delete.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>delete_assignment</servlet-name>
+		<url-pattern>/assignment/delete.html</url-pattern>
+	</servlet-mapping>
+	
+	
+
+
+	<!-- ASSIGNMENT END -->
+
+
+</web-app>

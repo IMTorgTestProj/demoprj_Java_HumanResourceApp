@@ -1,0 +1,180 @@
+/* START */
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+body {
+	background-color: #f2f2f2 !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-align: center;
+}
+
+.container {
+	background-color: #ffffff !important;
+	margin-top: 10px;
+}
+
+.title_color {
+	color: orange;
+	text-align: left !important
+}
+
+div #container_header {
+	border-bottom: 1 px solid orange;
+	/*padding-bottom: 10px;*/
+}
+
+#container_body {
+	padding: 15px 15px 50px 15px;
+	margin: 0px;
+}
+
+.search_box {
+	padding-bottom: 15px;
+}
+
+.detail {
+	padding-bottom: 15px;
+}
+
+#bfooter {
+	border-top: 1px solid orange;
+	padding: 10px 0px;
+}
+
+#bfooter p {
+	text-align: center;
+}
+
+/* END */
+.nav-tabs>li>a {
+	background-color: #dedede !important;
+}
+
+label {
+	font-weight: normal !important;
+}
+
+.btn {
+	background-color: #dedede !important;
+	height: 30px;
+	padding: 4px 12px;
+}
+
+.col-sm-offset-4 {
+	margin-left: 20.333333% !important;
+}
+
+.btn:hover {
+	background-color: #eee !important;
+}
+
+/* MEDIA CSS - START */
+@media ( min-width : 768px) {
+	.orangtext {
+		font-size: 30px;
+	}
+	/* .form-horizontal .control-label {
+        text-align: left !important;
+    }*/
+	.table-responsive {
+		height: 300px !important;
+		overflow-y: auto !important;
+		overflow-x: hidden;
+		border: 1px solid #cecece;
+	}
+	.container h4:first-child {
+		border-bottom: 1px solid orange;
+		padding-bottom: 10px;
+		/*margin-bottom: 20px;*/
+	}
+	/*
+	tr td:nth-child(3), tr td:nth-child(4), tr td:nth-child(5) {
+		text-align: center;
+	}*/
+}
+
+.actioncol{
+	text-align: center;
+}
+
+/* MEDIA CSS - END */
+table tr:nth-child(even) {
+	background-color: #f0ecec;
+}
+
+table thead tr:first-child {
+	background-color: #cecece !important;
+}
+
+.container1 {
+	-webkit-box-shadow: inset 0 1px 100px rgba(0, 0, 0, .075);
+	box-shadow: inset 0 1px 100px rgba(0, 0, 0, .075);
+}
+
+.searchPadding {
+	padding-top: 7px;
+}
+
+/* TESTING */
+#top_header1 {
+	border: 1px solid #E0E080;
+}
+
+#menu1 {
+	border: 1px solid #BF8DFF;
+}
+
+#container_header1 {
+	border: 1px solid red;
+}
+
+#container_body1 {
+	border: 1px solid blue;
+}
+
+#search_container1 {
+	border: 1px solid green;
+}
+
+#table_body1 {
+	border: 1px solid yellow;
+}
+
+fieldset {
+	border: 1px #8A8A8A solid;
+}
+
+legend {
+	border: 1px #8A8A8A solid;
+	padding: 0.2em 0.8em;
+	font-size: 17px;
+	background-color: #F2F2F2;
+}
+
+fieldset {
+	display: block;
+	margin-left: 2px;
+	margin-right: 2px;
+	margin-bottom: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 0.75em;
+	padding-right: 0.75em;
+	border: 2px groove(internal value);
+}
+
+table{
+	margin-bottom: 0px !important;
+}
+
+
+
+
+.row_n{
+	margin-left: 0px !important;
+    margin-right: 0px !important;
+}
