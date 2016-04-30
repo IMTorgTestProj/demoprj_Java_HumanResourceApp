@@ -30,6 +30,7 @@ public class AssignmentController extends HttpServlet {
 	private static final String LIST_PAGE = "/assignment/list.html";
 	private static final String VIEW_PAGE = "/assignment/view.html";
 	private static final String EDIT_PAGE = "/assignment/edit.html";
+	private static final String DELETE_PAGE = "/assignment/delete.html";
 
 	private AssignmentDAO assignmentDAO;
 	private EmployeeDAO employeeDAO;
@@ -125,19 +126,22 @@ public class AssignmentController extends HttpServlet {
 			int assignmentId = Integer.parseInt(request.getParameter("id"));
 
 			Assignment assignment = assignmentDAO.getJobAssignment(assignmentId);
-
 			request.setAttribute("assignment", assignment);
 
 			List<Job> jobs = assignmentDAO.loadMapJob(assignment.getEmployeeId());
 			request.setAttribute("jobs", jobs);
 
 			page = EDIT_PAGE;
+		} else if (action.equals(HRUtil.Action.DELETE)) {
+			int assignmentId = Integer.parseInt(request.getParameter("id"));
+			request.setAttribute("assignment", assignmentDAO.getJobAssignment(assignmentId));
+			page = DELETE_PAGE;
 		}
 
 		if (action.equals(HRUtil.Action.ADD) || action.equals(HRUtil.Action.REMOVE)) {
 			response.sendRedirect(page);
 		} else if (action.equals(HRUtil.Action.LIST) || action.equals(HRUtil.Action.VIEW)
-				|| action.equals(HRUtil.Action.EDIT)) {
+				|| action.equals(HRUtil.Action.EDIT) || action.equals(HRUtil.Action.DELETE)) {
 			RequestDispatcher view = request.getRequestDispatcher(page);
 			view.forward(request, response);
 		}
@@ -182,6 +186,11 @@ public class AssignmentController extends HttpServlet {
 			assignment.setUpdatedDate(new Date());
 
 			assignmentDAO.updateAssignment(assignment);
+
+			page = "Controller?action=list";
+		} else if (action.equals(HRUtil.Action.DELETE)) {
+			int assignmentId = Integer.parseInt(request.getParameter("id"));
+			assignmentDAO.deleteAssignment(assignmentId);
 
 			page = "Controller?action=list";
 		}

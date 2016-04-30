@@ -202,6 +202,16 @@
 		<url-pattern>/assignment/edit.html</url-pattern>
 	</servlet-mapping>
 		
+	<servlet>
+		<servlet-name>delete_assignment</servlet-name>
+		<jsp-file>/assignment/delete.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>delete_assignment</servlet-name>
+		<url-pattern>/assignment/delete.html</url-pattern>
+	</servlet-mapping>
+	
+	
 
 
 	<!-- ASSIGNMENT END -->

@@ -21,5 +21,7 @@ public interface AssignmentDAO {
 	public Assignment getJobAssignment(int assignmentId);
 	
 	public boolean updateAssignment(Assignment assignment);
+	
+	public boolean deleteAssignment(int assignmentId);
 
 }

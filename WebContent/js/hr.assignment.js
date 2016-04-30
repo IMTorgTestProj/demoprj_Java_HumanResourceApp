@@ -18,8 +18,14 @@ $(document).ready(function() {
 		if(validation){
 			$('form').submit();
 		}
-		
 	});
+	
+	$('input[name="deleteassignmentbtn"]').click(function(){
+		if (confirm("Are you sure that you want to delete Job Assignment", "Alert")) {
+			$('form').submit();
+		}
+	});
+	
 
 	$('#emp_ssn').on('change', function() {
 		var id = $(this).val();

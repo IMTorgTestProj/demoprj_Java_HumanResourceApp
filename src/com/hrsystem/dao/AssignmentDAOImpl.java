@@ -110,8 +110,6 @@ public class AssignmentDAOImpl implements AssignmentDAO {
 				job.setJobNumber(rs.getString("jobnumber"));
 				job.setJobName(rs.getString("name"));
 				job.setDescription(rs.getString("description"));
-
-				// System.out.println(job);
 			}
 
 		} catch (SQLException ex) {
@@ -183,7 +181,6 @@ public class AssignmentDAOImpl implements AssignmentDAO {
 
 				assignment.setStatus(rs.getInt("status"));
 
-				// System.out.println(job);
 				jobAssignments.add(assignment);
 
 			}
@@ -261,7 +258,33 @@ public class AssignmentDAOImpl implements AssignmentDAO {
 			pStatement.setInt(1, assignment.getJobId());
 			pStatement.setTimestamp(2, new java.sql.Timestamp(assignment.getUpdatedDate().getTime()));
 			pStatement.setInt(3, assignment.getAssignmentId());
-			
+
+			pStatement.executeUpdate();
+			actionResult = true;
+
+		} catch (SQLException ex) {
+			System.out.println("SQL Exception : " + ex.getMessage());
+			ex.printStackTrace();
+		} catch (Exception ex) {
+			System.out.println("Exception : " + ex.getMessage());
+			ex.printStackTrace();
+		}
+
+		return actionResult;
+
+	}
+
+	@Override
+	public boolean deleteAssignment(int assignmentId) {
+		boolean actionResult = false;
+
+		try {
+			String sqlQuery = "delete from jobassignment where assignmentid = ?";
+			PreparedStatement pStatement = connection.prepareStatement(sqlQuery);
+
+			pStatement.clearParameters();
+			pStatement.setInt(1, assignmentId);
+
 			pStatement.executeUpdate();
 			actionResult = true;
 
