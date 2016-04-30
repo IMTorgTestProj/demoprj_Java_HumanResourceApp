@@ -33,7 +33,6 @@ public class JobController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String pageContext = request.getContextPath();
 		String page = "";
 		String action = request.getParameter("action");
 
@@ -54,11 +53,6 @@ public class JobController extends HttpServlet {
 			int jobId = Integer.parseInt(request.getParameter("id"));
 			request.setAttribute("job", jobDAO.getJobById(jobId));
 			page = DELETE_PAGE;
-		} else if (action.equals(HRUtil.Action.REMOVE)) {
-			int jobId = Integer.parseInt(request.getParameter("id"));
-			jobDAO.deleteJob(jobId);
-			// request.setAttribute("jobs", jobDAO.getAllJobs());
-			page = "Controller?action=list";
 		} else if (action.equals(HRUtil.Action.SEARCH)) {
 			String searchKey = request.getParameter("searchjob");
 
@@ -70,13 +64,8 @@ public class JobController extends HttpServlet {
 
 		}
 
-		if (action.equals(HRUtil.Action.REMOVE)) {
-			response.sendRedirect("Controller?action=list");
-		} else {
-			RequestDispatcher view = request.getRequestDispatcher(page);
-			view.forward(request, response);
-			// view.include(request, response);
-		}
+		RequestDispatcher view = request.getRequestDispatcher(page);
+		view.forward(request, response);
 	}
 
 	@Override
@@ -97,12 +86,7 @@ public class JobController extends HttpServlet {
 
 			jobDAO.addJob(job);
 
-			// RequestDispatcher view =
-			// request.getRequestDispatcher("/job/add.html");
-			// view.forward(request, response);
-
 			page += ADD_PAGE;
-			// response.sendRedirect(page);
 		} else if (action.equals(HRUtil.Action.UPDATE)) {
 			Job job = new Job();
 
@@ -112,13 +96,14 @@ public class JobController extends HttpServlet {
 			job.setDescription(request.getParameter("description"));
 			job.setUpdatedDate(new Date());
 
-			System.out.println(job);
+			//System.out.println(job);
 			jobDAO.updateJob(job);
 
-			// request.setAttribute("jobs", jobDAO.getAllJobs());
 			page = "Controller?action=list";
-			// RequestDispatcher view = request.getRequestDispatcher(page);
-			// view.forward(request, response);
+		} else if (action.equals(HRUtil.Action.DELETE)) {
+			int jobId = Integer.parseInt(request.getParameter("id"));
+			jobDAO.deleteJob(jobId);
+			page = "Controller?action=list";
 		}
 		response.sendRedirect(page);
 

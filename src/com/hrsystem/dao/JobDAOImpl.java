@@ -6,10 +6,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.hrsystem.model.Job;
 import com.hrsystem.util.DBUtil;
+import com.hrsystem.util.HRUtil;
 
 public class JobDAOImpl implements JobDAO {
 
@@ -67,9 +69,7 @@ public class JobDAOImpl implements JobDAO {
 				job.setJobName(rs.getString("name"));
 				job.setDescription(rs.getString("description"));
 
-				// System.out.println(job);
 				jobs.add(job);
-
 			}
 
 		} catch (SQLException ex) {
@@ -100,8 +100,6 @@ public class JobDAOImpl implements JobDAO {
 				job.setJobNumber(rs.getString("jobnumber"));
 				job.setJobName(rs.getString("name"));
 				job.setDescription(rs.getString("description"));
-
-				// System.out.println(job);
 			}
 
 		} catch (SQLException ex) {
@@ -156,7 +154,22 @@ public class JobDAOImpl implements JobDAO {
 			pStatement.clearParameters();
 			pStatement.setInt(1, jobId);
 
-			pStatement.executeUpdate();
+			int count = pStatement.executeUpdate();
+
+			if (count == 1) {
+				String updateQuery = "update jobassignment ja set status = ?, updateddate= ? where ja.jobid = ? and status = ?";
+				PreparedStatement pStatement1 = connection.prepareStatement(updateQuery);
+
+				pStatement1.clearParameters();
+
+				pStatement1.setInt(1, HRUtil.Status.Inactive);
+				pStatement1.setTimestamp(2, new java.sql.Timestamp((new Date()).getTime()));
+				pStatement1.setInt(3, jobId);
+				pStatement1.setInt(4, HRUtil.Status.Active);
+
+				pStatement1.executeUpdate();
+			}
+
 			actionResult = true;
 
 		} catch (SQLException ex) {
@@ -166,7 +179,6 @@ public class JobDAOImpl implements JobDAO {
 			System.out.println("Exception : " + ex.getMessage());
 			ex.printStackTrace();
 		}
-
 		return actionResult;
 	}
 
@@ -175,11 +187,11 @@ public class JobDAOImpl implements JobDAO {
 		List<Job> jobs = new ArrayList<Job>();
 
 		try {
-			String sqlQuery = "select * from job where jobnumber like '%"+ search +"%'";
+			String sqlQuery = "select * from job where jobnumber like '%" + search + "%'";
 			PreparedStatement pStatement = connection.prepareStatement(sqlQuery);
 
-			//pStatement.clearParameters();
-			//pStatement.setString(1, search);
+			// pStatement.clearParameters();
+			// pStatement.setString(1, search);
 
 			ResultSet rs = pStatement.executeQuery(sqlQuery);
 
@@ -191,9 +203,7 @@ public class JobDAOImpl implements JobDAO {
 				job.setJobName(rs.getString("name"));
 				job.setDescription(rs.getString("description"));
 
-				// System.out.println(job);
 				jobs.add(job);
-
 			}
 
 		} catch (SQLException ex) {

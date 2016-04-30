@@ -24,8 +24,8 @@
 				<h4>Delete Job</h4>
 			</div>
 			<div id="container_body">
-				<form method="GET" action="Controller" class="form-horizontal" role="form">				
-					<input type="hidden" name="action" value="remove" />
+				<form method="POST" action="Controller" class="form-horizontal" role="form">				
+					<input type="hidden" name="action" value="delete" />
 					<input type="hidden" name="id" value="${job.jobId}" />
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="jobnumber">Job Number:</label>
