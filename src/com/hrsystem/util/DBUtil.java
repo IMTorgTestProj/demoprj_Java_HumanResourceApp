@@ -10,12 +10,13 @@ import java.util.Properties;
 
 public class DBUtil {
 
-	private static Connection connection = null;
+	private static Connection	connection	= null;
 
 	static {
 		try {
 			Properties prop = new Properties();
-			InputStream inputStream = DBUtil.class.getClassLoader().getResourceAsStream("/db.properties");
+			InputStream inputStream = DBUtil.class.getClassLoader().getResourceAsStream(
+					"db.properties");
 			prop.load(inputStream);
 			String driver = prop.getProperty("driver");
 			String url = prop.getProperty("url");
