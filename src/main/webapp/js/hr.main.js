@@ -1,10 +1,16 @@
 function deleteItem() {
+/**    
+* pulvrtag:{ "Func": "Add_Job" } 
+*/
 	if (confirm("Are you sure that you want to delete this job?", "Alert")) {
 	}
 	return false;
 }
 
 function showJobList() {
+/**    
+* pulvrtag:{ "Func": "Add_Job" } 
+*/
 	window.location.assign(getContextPath() + "/job/Controller?action=list");
 }
 
