@@ -14,9 +14,8 @@ import com.hrsystem.dao.JobDAOImpl;
 import com.hrsystem.model.Job;
 import com.hrsystem.util.HRUtil;
 
-/**    
-* pulvrtag:{ "Func": "Add_Job" } 
-*/
+/*! pulvrtag:{ "Func": "Add_Job" }  */
+
 public class JobController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
