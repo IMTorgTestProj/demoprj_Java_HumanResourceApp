@@ -11,6 +11,11 @@
 <title>Human Resource System</title>
 </head>
 <body>
+<!--
+/**    
+* pulvrtag:{ "Func": "Add_Job" } 
+*/
+-->
 
 	<div id="wrapper" class="container">
 		<div id="top_header">
