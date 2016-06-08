@@ -14,10 +14,11 @@ import com.hrsystem.dao.JobDAOImpl;
 import com.hrsystem.model.Job;
 import com.hrsystem.util.HRUtil;
 
-public class JobController extends HttpServlet {
 /**    
 * pulvrtag:{ "Func": "Add_Job" } 
 */
+public class JobController extends HttpServlet {
+
 	private static final long serialVersionUID = 1L;
 
 	private static final String ADD_PAGE = "/job/add.html";
