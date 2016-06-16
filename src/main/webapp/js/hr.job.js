@@ -1,7 +1,8 @@
-$(document).ready(function() {
 /**    
 * pulvrtag:{ "Func": "Add_Job" } 
-*/	
+*/
+$(document).ready(function() {
+	
 
 	$('input[name="jobnumber"').focus();
 
