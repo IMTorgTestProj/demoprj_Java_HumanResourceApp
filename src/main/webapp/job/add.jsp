@@ -11,11 +11,7 @@
 <title>Human Resource System</title>
 </head>
 <body>
-<!--
-/**    
-* pulvrtag:{ "Func": "Add_Job" } 
-*/
--->
+
 
 	<div id="wrapper" class="container">
 		<div id="top_header">
@@ -29,29 +25,50 @@
 				<h4>Add Job</h4>
 			</div>
 			<div id="container_body">
+				
 				<form method="POST" action="Controller" class="form-horizontal" role="form">
 					<input type="hidden" name="action" value="add" />
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="jobnumber">Job Number:</label>
 						<div class="col-sm-6">
+							<!--
+							/**    
+							* pulvrtag:{ "Func": "Add_Job" } 
+							*/
+							-->
 							<input id="jobnumber" name="jobnumber" type="text" class="form-control" placeholder="Enter Job Number" maxlength="25">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="jobname">Job Name:</label>
 						<div class="col-sm-6">
+														<!--
+							/**    
+							* pulvrtag:{ "Func": "Add_Job" } 
+							*/
+							-->
 							<input id="jobname" name="jobname" type="text" class="form-control" placeholder="Enter Job Name" maxlength="50">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="description">Description:</label>
 						<div class="col-sm-6">
+														<!--
+							/**    
+							* pulvrtag:{ "Func": "Add_Job" } 
+							*/
+							-->
 							<textarea id="description" name="description" class="form-control" rows="5" maxlength="200" placeholder="Enter Description"></textarea>
 							<!-- <h6 class="pull-right" id="count_message">(100 Character Remaining)</h6> -->
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-6">
+														<!--
+							/**    
+							* pulvrtag:{ "Func": "Add_Job" } 
+							*/
+							-->
 							<input name="addjobbtn" type="button" class="col-sm-offset-1 btn btn-default" value="Add" /> <input name="clear" type="button" class="col-sm-offset-1 btn btn-default" value="Clear" />
 						</div>
 
