@@ -54,7 +54,8 @@ public class JobDAOImpl implements JobDAO {
 
 		return actionResult;
 	}
-
+	
+	/*! pulvrtag:{ "Func": "List_Job" }  */
 	@Override
 	public List<Job> getAllJobs() {
 		List<Job> jobs = new ArrayList<Job>();
