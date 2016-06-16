@@ -1,11 +1,12 @@
-/**    
-* pulvrtag:{ "Func": "Add_Job" } 
-*/
+
 $(document).ready(function() {
 	
 
 	$('input[name="jobnumber"').focus();
-
+	
+	/**    
+	* pulvrtag:{ "Func": "Add_Job" } 
+	*/
 	$('input[name="addjobbtn"],input[name="updatejobbtn"]').click(function() {
 
 		var validation = true;
