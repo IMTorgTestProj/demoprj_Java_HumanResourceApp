@@ -2,6 +2,9 @@ package com.hrsystem.model;
 
 import java.util.Date;
 
+/**    
+* pulvr-tag:{ "Func": "Add_Job" } 
+*/
 public class Job {
 
 	private int jobId;
