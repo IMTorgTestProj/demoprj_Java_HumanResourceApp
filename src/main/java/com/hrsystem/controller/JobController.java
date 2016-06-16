@@ -32,7 +32,8 @@ public class JobController extends HttpServlet {
 		super();
 		this.jobDAO = new JobDAOImpl();
 	}
-
+	
+	/*! pulvrtag:{ "Func": "List_Job" }  */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
