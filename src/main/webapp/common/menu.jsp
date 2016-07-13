@@ -20,7 +20,7 @@
 		<ul class="dropdown-menu">
 			<li><a href="<%=contextPath%>/assignment/Controller?action=add">New Assignment</a></li>
 			<li><a href="<%=contextPath%>/assignment/Controller?action=list">Employee Assignment</a></li>
-			<li><a href="<%=contextPath%>/searchjobassignment.html">Search Assignment</a></li>
+			<li><a href="<%=contextPath%>/assignment/search.html">Search Assignment</a></li>
 		</ul></li>
 	<li><a href="#">Help</a></li>
 </ul>

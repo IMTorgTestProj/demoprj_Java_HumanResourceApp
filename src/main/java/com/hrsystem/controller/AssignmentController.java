@@ -1,6 +1,7 @@
 package com.hrsystem.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -18,6 +19,8 @@ import com.hrsystem.dao.AssignmentDAO;
 import com.hrsystem.dao.AssignmentDAOImpl;
 import com.hrsystem.dao.EmployeeDAO;
 import com.hrsystem.dao.EmployeeDAOImpl;
+import com.hrsystem.dao.JobDAO;
+import com.hrsystem.dao.JobDAOImpl;
 import com.hrsystem.model.Assignment;
 import com.hrsystem.model.Employee;
 import com.hrsystem.model.Job;
@@ -25,20 +28,22 @@ import com.hrsystem.util.HRUtil;
 
 public class AssignmentController extends HttpServlet {
 
-	private static final long serialVersionUID = 1L;
-	private static final String ADD_PAGE = "/assignment/add.html";
-	private static final String LIST_PAGE = "/assignment/list.html";
-	private static final String VIEW_PAGE = "/assignment/view.html";
-	private static final String EDIT_PAGE = "/assignment/edit.html";
-	private static final String DELETE_PAGE = "/assignment/delete.html";
+	private static final long	serialVersionUID	= 1L;
+	private static final String	ADD_PAGE			= "/assignment/add.html";
+	private static final String	LIST_PAGE			= "/assignment/list.html";
+	private static final String	VIEW_PAGE			= "/assignment/view.html";
+	private static final String	EDIT_PAGE			= "/assignment/edit.html";
+	private static final String	DELETE_PAGE			= "/assignment/delete.html";
 
-	private AssignmentDAO assignmentDAO;
-	private EmployeeDAO employeeDAO;
+	private AssignmentDAO		assignmentDAO;
+	private EmployeeDAO			employeeDAO;
+	private JobDAO				jobDAO;
 
 	public AssignmentController() {
 		super();
 		this.assignmentDAO = new AssignmentDAOImpl();
 		this.employeeDAO = new EmployeeDAOImpl();
+		this.jobDAO = new JobDAOImpl();
 	}
 
 	@Override
@@ -115,7 +120,8 @@ public class AssignmentController extends HttpServlet {
 			response.getWriter().write(data.toString());
 
 		} else if (action.equals(HRUtil.Action.LIST)) {
-			request.setAttribute("assignments", assignmentDAO.getAllJobAssignment(HRUtil.Status.Active));
+			request.setAttribute("assignments",
+					assignmentDAO.getAllJobAssignment(HRUtil.Status.Active));
 			page = LIST_PAGE;
 
 		} else if (action.equals(HRUtil.Action.VIEW)) {
@@ -136,12 +142,47 @@ public class AssignmentController extends HttpServlet {
 			int assignmentId = Integer.parseInt(request.getParameter("id"));
 			request.setAttribute("assignment", assignmentDAO.getJobAssignment(assignmentId));
 			page = DELETE_PAGE;
+		} else if (action.equals(HRUtil.Action.SEARCH)) {
+			String searchKey = request.getParameter("searchassignment");
+			List<Assignment> assignments = new ArrayList<Assignment>();
+			if (searchKey.trim().length() > 0) {
+				List<Employee> employees = employeeDAO.searchEmployees(searchKey);
+				if (employees.size() > 0) {
+					for (Employee employee : employees) {
+						Assignment assignment = assignmentDAO
+								.getAssignmentByEmpId(employee.getEmployeeId());
+						// System.out.println(
+						// "assignment.getAssignmentId() " +
+						// assignment.getAssignmentId());
+						if (assignment.getAssignmentId() >= 0) {
+							assignments.add(assignment);
+						}
+					}
+				}
+				List<Job> jobs = jobDAO.searchJobs(searchKey);
+				if (jobs.size() > 0) {
+					for (Job job : jobs) {
+						Assignment assignment = new Assignment();
+						assignment = assignmentDAO.getAssignmentByJobId(job.getJobId());
+						// System.out.println(
+						// "assignment.getAssignmentId() " +
+						// assignment.getAssignmentId());
+						if (assignment.getAssignmentId() > 0) {
+							assignments.add(assignment);
+						}
+					}
+				}
+			}
+			request.setAttribute("assignments", assignments);
+
+			page = "search.html";
 		}
 
 		if (action.equals(HRUtil.Action.ADD)) {
 			response.sendRedirect(page);
 		} else if (action.equals(HRUtil.Action.LIST) || action.equals(HRUtil.Action.VIEW)
-				|| action.equals(HRUtil.Action.EDIT) || action.equals(HRUtil.Action.DELETE)) {
+				|| action.equals(HRUtil.Action.EDIT) || action.equals(HRUtil.Action.DELETE)
+				|| action.equals(HRUtil.Action.SEARCH)) {
 			RequestDispatcher view = request.getRequestDispatcher(page);
 			view.forward(request, response);
 		}

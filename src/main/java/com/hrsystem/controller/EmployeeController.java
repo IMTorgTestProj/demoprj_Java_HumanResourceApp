@@ -17,14 +17,14 @@ import com.hrsystem.util.HRUtil;
 
 public class EmployeeController extends HttpServlet {
 
-	private static final long serialVersionUID = 1L;
-	private static final String ADD_PAGE = "/employee/add.html";
-	private static final String LIST_PAGE = "/employee/list.html";
-	private static final String VIEW_PAGE = "/employee/view.html";
-	private static final String EDIT_PAGE = "/employee/edit.html";
-	private static final String DELETE_PAGE = "/employee/delete.html";
+	private static final long	serialVersionUID	= 1L;
+	private static final String	ADD_PAGE			= "/employee/add.html";
+	private static final String	LIST_PAGE			= "/employee/list.html";
+	private static final String	VIEW_PAGE			= "/employee/view.html";
+	private static final String	EDIT_PAGE			= "/employee/edit.html";
+	private static final String	DELETE_PAGE			= "/employee/delete.html";
 
-	private EmployeeDAO employeeDAO;
+	private EmployeeDAO			employeeDAO;
 
 	public EmployeeController() {
 		super();
@@ -44,7 +44,8 @@ public class EmployeeController extends HttpServlet {
 			if (session.getAttribute("location") == null) {
 				session.setAttribute("location", employeeDAO.loadLocation());
 			}
-			page = pageContext + ADD_PAGE;
+			page = ADD_PAGE;
+			// System.out.println("abc :: " + pageContext + page);
 
 		} else if (action.equals(HRUtil.Action.LIST)) {
 			request.setAttribute("employees", employeeDAO.getAllEmployees());
@@ -76,7 +77,7 @@ public class EmployeeController extends HttpServlet {
 		}
 		RequestDispatcher view = request.getRequestDispatcher(page);
 		view.forward(request, response);
-	
+
 	}
 
 	@Override

@@ -211,7 +211,14 @@
 		<url-pattern>/assignment/delete.html</url-pattern>
 	</servlet-mapping>
 	
-	
+	<servlet>
+		<servlet-name>search_assignment</servlet-name>
+		<jsp-file>/assignment/search.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>search_assignment</servlet-name>
+		<url-pattern>/assignment/search.html</url-pattern>
+	</servlet-mapping>
 
 
 	<!-- ASSIGNMENT END -->
