@@ -147,38 +147,40 @@ public class AssignmentController extends HttpServlet {
 			List<Assignment> assignments = new ArrayList<Assignment>();
 			if (searchKey.trim().length() > 0) {
 				List<Employee> employees = employeeDAO.searchEmployees(searchKey);
+				// System.out.println("employees.size() " + employees.size());
 				if (employees.size() > 0) {
 					for (Employee employee : employees) {
-						Assignment assignment = assignmentDAO
+						List<Assignment> jobAssignments = assignmentDAO
 								.getAssignmentByEmpId(employee.getEmployeeId());
-						// System.out.println(
-						// "assignment.getAssignmentId() " +
-						// assignment.getAssignmentId());
-						if (assignment.getAssignmentId() >= 0) {
+						// System.out.println("assignment.getAssignmentId() " +
+						// assignments);
+						for (Assignment assignment : jobAssignments) {
 							assignments.add(assignment);
 						}
 					}
 				}
+
 				List<Job> jobs = jobDAO.searchJobs(searchKey);
+				// System.out.println("jobs.size() " + jobs.size());
 				if (jobs.size() > 0) {
 					for (Job job : jobs) {
-						Assignment assignment = new Assignment();
-						assignment = assignmentDAO.getAssignmentByJobId(job.getJobId());
-						// System.out.println(
-						// "assignment.getAssignmentId() " +
-						// assignment.getAssignmentId());
-						if (assignment.getAssignmentId() > 0) {
+						List<Assignment> jobAssignments = assignmentDAO
+								.getAssignmentByJobId(job.getJobId());
+						// System.out.println("assignment.getAssignmentId() " +
+						// assignment);
+						for (Assignment assignment : jobAssignments) {
 							assignments.add(assignment);
 						}
 					}
 				}
 			}
 			request.setAttribute("assignments", assignments);
-
 			page = "search.html";
 		}
 
-		if (action.equals(HRUtil.Action.ADD)) {
+		if (action.equals(HRUtil.Action.ADD))
+
+		{
 			response.sendRedirect(page);
 		} else if (action.equals(HRUtil.Action.LIST) || action.equals(HRUtil.Action.VIEW)
 				|| action.equals(HRUtil.Action.EDIT) || action.equals(HRUtil.Action.DELETE)

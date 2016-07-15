@@ -4,25 +4,25 @@ import java.util.Date;
 
 public class Assignment {
 
-	private int assignmentId;
-	private int employeeId;
-	private int jobId;
-	private int status;
-	private Date createdDate;
-	private Date updatedDate;
+	private int		assignmentId;
+	private int		employeeId;
+	private int		jobId;
+	private int		status;
+	private Date	createdDate;
+	private Date	updatedDate;
 
 	// Employee Data
-	private String ssn;
-	private String firstName;
-	private String lastName;
-	private String initMiddle;
-	private String location;
-	private String salaryType;
+	private String	ssn;
+	private String	firstName;
+	private String	lastName;
+	private String	initMiddle;
+	private String	location;
+	private String	salaryType;
 
 	// Job Data
-	private String jobNumber;
-	private String jobName;
-	private String description;
+	private String	jobNumber;
+	private String	jobName;
+	private String	description;
 
 	public int getAssignmentId() {
 		return assignmentId;
@@ -142,6 +142,43 @@ public class Assignment {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Assignment [assignmentId=");
+		builder.append(assignmentId);
+		builder.append(", employeeId=");
+		builder.append(employeeId);
+		builder.append(", jobId=");
+		builder.append(jobId);
+		builder.append(", status=");
+		builder.append(status);
+		builder.append(", createdDate=");
+		builder.append(createdDate);
+		builder.append(", updatedDate=");
+		builder.append(updatedDate);
+		builder.append(", ssn=");
+		builder.append(ssn);
+		builder.append(", firstName=");
+		builder.append(firstName);
+		builder.append(", lastName=");
+		builder.append(lastName);
+		builder.append(", initMiddle=");
+		builder.append(initMiddle);
+		builder.append(", location=");
+		builder.append(location);
+		builder.append(", salaryType=");
+		builder.append(salaryType);
+		builder.append(", jobNumber=");
+		builder.append(jobNumber);
+		builder.append(", jobName=");
+		builder.append(jobName);
+		builder.append(", description=");
+		builder.append(description);
+		builder.append("]");
+		return builder.toString();
 	}
 
 }

@@ -303,9 +303,9 @@ public class AssignmentDAOImpl implements AssignmentDAO {
 	}
 
 	@Override
-	public Assignment getAssignmentByEmpId(int employeeId) {
-		Assignment assignment = new Assignment();
+	public List<Assignment> getAssignmentByEmpId(int employeeId) {
 
+		List<Assignment> jobAssignments = new ArrayList<Assignment>();
 		try {
 			String sqlQuery = "select ja.assignmentid, ja.employeeid, e.ssn, e.firstname, e.lastname, e.initmiddle, e.location, e.salarytype, j.jobid, j.jobnumber, j.name, j.description, ja.status  from employee e, jobassignment ja, job j where e.employeeid = ja.employeeid and j.jobid = ja.jobid and ja.employeeid = ?";
 
@@ -317,7 +317,7 @@ public class AssignmentDAOImpl implements AssignmentDAO {
 			ResultSet rs = pStatement.executeQuery();
 
 			while (rs.next()) {
-
+				Assignment assignment = new Assignment();
 				assignment.setAssignmentId(rs.getInt("assignmentid"));
 
 				assignment.setEmployeeId(rs.getInt("employeeid"));
@@ -334,7 +334,7 @@ public class AssignmentDAOImpl implements AssignmentDAO {
 				assignment.setDescription(rs.getString("description"));
 
 				assignment.setStatus(rs.getInt("status"));
-
+				jobAssignments.add(assignment);
 				// System.out.println(job);
 			}
 
@@ -346,12 +346,12 @@ public class AssignmentDAOImpl implements AssignmentDAO {
 			ex.printStackTrace();
 		}
 
-		return assignment;
+		return jobAssignments;
 	}
 
 	@Override
-	public Assignment getAssignmentByJobId(int jobId) {
-		Assignment assignment = new Assignment();
+	public List<Assignment> getAssignmentByJobId(int jobId) {
+		List<Assignment> jobAssignments = new ArrayList<Assignment>();
 
 		try {
 			String sqlQuery = "select ja.assignmentid, ja.employeeid, e.ssn, e.firstname, e.lastname, e.initmiddle, e.location, e.salarytype, j.jobid, j.jobnumber, j.name, j.description, ja.status  from employee e, jobassignment ja, job j where e.employeeid = ja.employeeid and j.jobid = ja.jobid and ja.jobId = ?";
@@ -364,7 +364,7 @@ public class AssignmentDAOImpl implements AssignmentDAO {
 			ResultSet rs = pStatement.executeQuery();
 
 			while (rs.next()) {
-
+				Assignment assignment = new Assignment();
 				assignment.setAssignmentId(rs.getInt("assignmentid"));
 
 				assignment.setEmployeeId(rs.getInt("employeeid"));
@@ -381,7 +381,7 @@ public class AssignmentDAOImpl implements AssignmentDAO {
 				assignment.setDescription(rs.getString("description"));
 
 				assignment.setStatus(rs.getInt("status"));
-
+				jobAssignments.add(assignment);
 				// System.out.println(job);
 			}
 
@@ -393,7 +393,7 @@ public class AssignmentDAOImpl implements AssignmentDAO {
 			ex.printStackTrace();
 		}
 
-		return assignment;
+		return jobAssignments;
 	}
 
 }

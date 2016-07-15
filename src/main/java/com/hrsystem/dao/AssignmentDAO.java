@@ -24,8 +24,8 @@ public interface AssignmentDAO {
 
 	public boolean deleteAssignment(int assignmentId);
 
-	public Assignment getAssignmentByEmpId(int employeeId);
+	public List<Assignment> getAssignmentByEmpId(int employeeId);
 
-	public Assignment getAssignmentByJobId(int jobId);
+	public List<Assignment> getAssignmentByJobId(int jobId);
 
 }
