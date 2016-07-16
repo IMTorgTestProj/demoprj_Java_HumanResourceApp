@@ -38,5 +38,5 @@
 <link rel="stylesheet" type="text/css" href="<%=contextPath %>/css/_main.css">
 <script type="text/javascript" language="javascript" src="<%=contextPath %>/js/jMin.js"></script>
 <script type="text/javascript" language="javascript" src="<%=contextPath %>/js/bMin.js"></script>
-<script type="text/javascript" language="javascript" src="<%=contextPath %>/js/_main.js"></script>
+<script type="text/javascript" language="javascript" src="<%=contextPath %>/js/hr.main.js"></script>
 </html>
